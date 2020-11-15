@@ -1,1343 +1,1497 @@
 [
   {
     "id": 1,
-    "title": "将()属性设置为false，防止adbbackup导出数据",
-    "multi": false,
+    "title": "关于多线程并行处理定时任务的情况，下列哪些说法符合《阿里巴巴Java开发手册》",
+    "multi": true,
     "choose": [
       {
-        "title": "android:allowBackup",
+        "title": "推荐使用Timer方式处理。",
+        "result": false
+      },
+      {
+        "title": "推荐使用ScheduledExecutorService方式处理。",
         "result": true
       },
       {
-        "title": "android:debuggable"
+        "title": "Timer运行多个TimeTask时，只要其中之一没有捕获抛出的异常，其它任务便会自动终止运行。",
+        "result": true
       },
       {
-        "title": "android:permission"
-      },
-      {
-        "title": "android:theme"
+        "title": "ScheduledExecutorService并发运行多个定时任务时，其中某线程抛出异常，不会影响到其它线程的继续运行。",
+        "result": true
       }
     ]
   },
   {
     "id": 2,
-    "title": "定义某个style的以下行为哪些不符合规范()",
+    "title": "在多线程并发读写的情况下，下列哪些处理方式能保证对象的线程安全",
     "multi": true,
     "choose": [
       {
-        "title": "可以任意给style资源命名",
+        "title": "使用volatile关键字。",
+        "result": false
+      },
+      {
+        "title": "使用synchronized关键字给对象的读写操作加锁。",
         "result": true
       },
       {
-        "title": "当希望在某个BaseTheme的基础上扩展定义某个Activity的theme时，定义的style如下：<stylename=\"BaseTheme.ThisActivityTheme\">…</style>"
-      },
-      {
-        "title": "live模块的style文件名称为：customstyle.xml",
+        "title": "如果是基本类型，推荐使用java.util.concurrent.atomic包下面提供的线程安全的基本类型包装类，例如AtomicInteger。",
         "result": true
       },
       {
-        "title": "所有的style都是独立的，不存在继承关系",
+        "title": "如果是集合，推荐使用java.util.concurrent提供的并发集合类，例如：ConcurrentHashMap。",
         "result": true
       }
     ]
   },
   {
     "id": 3,
-    "title": "以下关于Activity#onDestroy方法的描述错误的是()",
+    "title": "关于线程池管理线程的好处，下列哪些说法是正确的",
     "multi": true,
     "choose": [
       {
-        "title": "可以在该方法中处理保存应用数据的相关逻辑",
+        "title": "能够减少在创建和销毁线程上所花的时间以及系统资源的开销。",
         "result": true
       },
       {
-        "title": "Activty子类重载该方法时，必须调用super.onDestroy()"
+        "title": "使用线程池一定能避免OOM问题。",
+        "result": false
       },
       {
-        "title": "应该在该方法注销之前注册的BroadcastReceiver"
-      },
-      {
-        "title": "在该方法中释放Activity相关线程资源",
+        "title": "线程资源必须通过线程池提供，不允许在应用中自行显式创建线程。",
         "result": true
+      },
+      {
+        "title": "线程池能够根据资源等待情况，自动调整线程优先级并解决死锁问题。",
+        "result": false
       }
     ]
   },
   {
     "id": 4,
-    "title": "以下关于使用DialogFragment替换Dialog的说法正确的是()",
+    "title": "关于加锁，下列哪些说法符合《阿里巴巴Java开发手册》",
     "multi": true,
     "choose": [
       {
-        "title": "DiaolgoFragment可以借助FragmentManager自动管理对话框状态，比如屏幕旋转后Dialog状态的恢复",
+        "title": "可以只锁代码区块的情况下，就不要锁整个方法体。",
         "result": true
       },
       {
-        "title": "DialogFragment可A便利的使用自定义Dialog和系统Dialog",
+        "title": "高并发的业务场景下，要考虑加锁及同步处理带来的性能损耗，能用无锁数据结构，就不要用锁。",
         "result": true
       },
       {
-        "title": "甶于系统Dialog是独立于Activity的系统，管理状态复杂，代码量比较多"
-      },
-      {
-        "title": "DialogFragment便于代码解耦合合、复用",
+        "title": "能用对象锁的情况下，就不要用类锁。",
         "result": true
       },
       {
-        "title": "系统Dialog在屏幕旋转的时候可能会导致内存泄漏",
+        "title": "加锁时需要保持一致的加锁顺序，否则可能会造成死锁。",
         "result": true
       }
     ]
   },
   {
     "id": 5,
-    "title": "以下说法正确的是。",
+    "title": "关于数据库中表相关的命名，下列哪些说法符合《阿里巴巴Java开发手册》",
     "multi": true,
     "choose": [
       {
-        "title": "应用发布前确保android:debuggable属性设置为false",
+        "title": "表名、字段名禁止出现数字开头，禁止两个下划线中间只出现数字。",
         "result": true
       },
       {
-        "title": "不要把敏感信息打印到log中",
+        "title": "表名不使用复数名词。",
         "result": true
       },
       {
-        "title": "不要广播敏感信息，只能在本应使用LocalBroadcast，避免被别的应用收到，或者setPackage做限制",
-        "result": true
+        "title": "表必备三字段命名：id, gmt_create, gmt_modify。",
+        "result": false
       },
       {
-        "title": "数据存储在Sqlite或者轻量级存储需要对数据进行加密，取出来的时候进行解密",
+        "title": "表必备三字段命名：id, gmt_create, gmt_modified。",
         "result": true
       }
     ]
   },
   {
     "id": 6,
-    "title": "在BroadcastReceiver中进行耗时操作，下列说法正确的是()",
+    "title": "关于使用explain对数据库性能进行优化分析，下列哪些说法符合《阿里巴巴Java开发手册》",
     "multi": false,
     "choose": [
       {
-        "title": "在onReceive()中可以执行耗时操作"
-      },
-      {
-        "title": "在onBind()方法中可以通过newthread()执行耗时操作"
-      },
-      {
-        "title": "在onBind()方法中，可以通过调用IntentService去执行耗时操作",
+        "title": "SQL性能优化的目标：至少要达到 range 级别，要求是ref级别，如果可以是consts最好。",
         "result": true
       },
       {
-        "title": "在onBind()方法中，可以通过创建ThreadPool执行耗时操作"
+        "title": "index级别走的是扫描索引，所以速度会比ref快。",
+        "result": false
+      },
+      {
+        "title": "range级别是指对表进行范围索引。",
+        "result": false
+      },
+      {
+        "title": "ref级别是指使用主键或者唯一索引。",
+        "result": false
       }
     ]
   },
   {
     "id": 7,
-    "title": "关于组件间数据传递的说法错误的是()",
-    "multi": false,
+    "title": "关于索引效率，下列哪些说法符合《阿里巴巴Java开发手册》",
+    "multi": true,
     "choose": [
       {
-        "title": "使用Intent传递数据"
+        "title": "使用索引的效率一定高于全表扫描的效率。",
+        "result": false
       },
       {
-        "title": "使用Application缓存当前登录的用户信息",
+        "title": "关于explain的结果，type=index的索引效率好于type=ref。",
+        "result": false
+      },
+      {
+        "title": "sql查询条件 where a like ‘%阿里%’ ，不会走索引。",
         "result": true
       },
       {
-        "title": "使用ContentProvider实现数据共享"
-      },
-      {
-        "title": "使用SharedPreferences实现数据共享"
+        "title": "sql查询条件 where a like ‘阿里%’ ,a列创建了索引，一般会使用索引进行检索。",
+        "result": true
       }
     ]
   },
   {
     "id": 8,
-    "title": "减小图片占用内存的方法有()",
+    "title": "关于MySQL性能优化的描述，下列哪些说法是正确的",
     "multi": true,
     "choose": [
       {
-        "title": "根据实际需要对图片进行缩放",
+        "title": "主键查询优先于二级索引查询。",
         "result": true
       },
       {
-        "title": "用RGB_565代替RGB_888",
+        "title": "表连接有一定的代价，故表连接数量越少越好。",
         "result": true
       },
       {
-        "title": "本地png图片预先用TinyPNG压缩",
+        "title": "一般情况下，二级索引扫描优先于全表扫描。",
         "result": true
       },
       {
-        "title": "使用inBitmap重复利用内存空间",
+        "title": "可以使用通过索引避免排序代价。",
         "result": true
       }
     ]
   },
   {
     "id": 9,
-    "title": "加载Bitmap图片时，inBitmap选项有什么作用？",
-    "multi": false,
+    "title": "关于索引的设计，下列哪些说法符合《阿里巴巴Java开发手册》",
+    "multi": true,
     "choose": [
       {
-        "title": "重复利用内存空间",
+        "title": "对varchar类型的字段建立索引，必须指定索引长度。",
         "result": true
       },
       {
-        "title": "图片压缩"
+        "title": "对varchar类型的字段建立索引，不需要指定索引长度，这样索引区分度最好。",
+        "result": false
       },
       {
-        "title": "限制清晰度"
+        "title": "业务上具有唯一特性的字段（含组合字段），必须指定唯一索引。",
+        "result": true
       },
       {
-        "title": "设置位图信息"
+        "title": "建复合索引时，一般选择区分度高的字段放在最左列。",
+        "result": true
       }
     ]
   },
   {
     "id": 10,
-    "title": "以下符合规范的操作有()",
-    "multi": true,
-    "choose": [
-      {
-        "title": "使用dp作为View的小单位",
-        "result": true
-      },
-      {
-        "title": "为子View和父View设置同样背景色"
-      },
-      {
-        "title": "禁止在非UI主线程操作View",
-        "result": true
-      },
-      {
-        "title": "源文件统一采用UTF-8编码",
-        "result": true
-      }
-    ]
-  },
-  {
-    "id": 11,
-    "title": "Android5.0以后安全性要求较高的应用应该使用()禁止录屏",
+    "title": "KV结构的集合，在处理null值的存储上有细微的区别，下列哪些说法是正确的",
     "multi": false,
     "choose": [
       {
-        "title": "window#setFlag(LayoutParam.FLAG_BLUR_BEHIND)"
-      },
-      {
-        "title": "window#setFlag(LayoutParam.FLAG_SECURE)",
+        "title": "TreeMap的key不可以为null",
         "result": true
       },
       {
-        "title": "window#setFlag(LayoutParam.FLAG_SPLIT_TOUCH)"
+        "title": "TreeMap的key可以为null",
+        "result": false
       },
       {
-        "title": "window#setFlag(LayoutParam.FLAG_KEEP_SCREEN_ON)"
+        "title": "ConcurrentHashMap的key可以为null",
+        "result": false
+      },
+      {
+        "title": "ConcurrentHashMap的value可以为null",
+        "result": false
+      }
+    ],
+    "tip": "HashMap的key/value均可以为null，但是TreeMap的key不能为空，value可以为空"
+  },
+  {
+    "id": 11,
+    "title": "Hashtable，HashMap, ConcurrentHashMap都是Map的实现类，它们在处理null值的存储上有细微的区别，下列哪些说法是正确的",
+    "multi": true,
+    "choose": [
+      {
+        "title": "Hashtable的KV都不可以为null。",
+        "result": true
+      },
+      {
+        "title": "HashMap的KV都可以为null。",
+        "result": true
+      },
+      {
+        "title": "HashMap的K不可以为null，V可以为null。",
+        "result": false
+      },
+      {
+        "title": "ConcurrentHashMap的KV都不可以为null。",
+        "result": true
       }
     ]
   },
   {
     "id": 12,
-    "title": "不建议使用AnimationDrawable的原因是()?",
+    "title": "sort表示元素在存入集合时进行了排序，数据遍历的结果是按某个排序规则输出的； 而order表示每次遍历的序列都是一样的，元素前后关系每次遍历都是确定的，那么下列哪些集合既是sort，又是order的",
     "multi": false,
     "choose": [
       {
-        "title": "动画不流畅"
+        "title": "HashSet",
+        "result": false
       },
       {
-        "title": "内存消耗过大",
+        "title": "LinkedList",
+        "result": false
+      },
+      {
+        "title": "HashMap",
+        "result": false
+      },
+      {
+        "title": "TreeSet",
         "result": true
-      },
-      {
-        "title": "不兼容问题"
       }
     ]
   },
   {
     "id": 13,
-    "title": "以下关于android.app.Service的说法正确的是()",
+    "title": "关于checked/unchecked exception，下列哪些说法是正确的",
     "multi": true,
     "choose": [
       {
-        "title": "如果Service需要处理耗时操作，可以使用IntentService实现",
+        "title": "继承java.lang.Error的类属于checked exception。",
+        "result": false
+      },
+      {
+        "title": "checked异常继承java.lang.Exception类。",
         "result": true
       },
       {
-        "title": "如果Service需要处理耗时操作可以通过AsyncTask实现",
+        "title": "unchecked异常继承java.lang.RuntimeException类。",
         "result": true
       },
       {
-        "title": "Service#onStartCommand()方法中可以进行网络请求操作"
-      },
-      {
-        "title": "Service#onStartCommand()是在MainThread执行的，因此不能执行耗时操作",
+        "title": "NullPointerException , IllegalArgumentException属于unchecked exception。",
         "result": true
       }
     ]
   },
   {
     "id": 14,
-    "title": "禁止使用常量初始化矢量参数构建IvParameterSpec，建议IV通过()产生",
-    "multi": false,
+    "title": "关于接口使用抛异常还是返回错误码，下列哪些说法符合《阿里巴巴Java开发手册》",
+    "multi": true,
     "choose": [
       {
-        "title": "常量初始化"
-      },
-      {
-        "title": "函数定义"
-      },
-      {
-        "title": "随机方式",
+        "title": "向公司外部提供的http/api接口，推荐使用“错误码”方式返回异常或者错误信息。",
         "result": true
       },
       {
-        "title": "写死变量"
+        "title": "对于应用内部的方法调用，推荐使用“抛出异常”的方式处理异常或者错误信息。",
+        "result": true
+      },
+      {
+        "title": "跨应用的RPC调用，推荐使用将“错误码”和“错误简短信息”封装成Result的方式进行返回。",
+        "result": true
+      },
+      {
+        "title": "对外提供的接口，一定要保证逻辑健壮性：尽量避免空指针等技术类异常；对于业务类异常要做好错误码或者异常信息的封装。",
+        "result": true
       }
     ]
   },
   {
     "id": 15,
-    "title": "以下说法正确的有哪些?",
+    "title": "关于异常的处理方式，下列哪些说法是正确的",
     "multi": true,
     "choose": [
       {
-        "title": "源文件推荐统一采用UTF-8的形式进行编码",
+        "title": "为防止obj对象本身空指针异常，书写代码时应该注意加异常捕获处理，例如：try { obj.method() } catch(NullPointerException e){……} 。",
+        "result": false
+      },
+      {
+        "title": "方法签名中，抛给调用者的关键字为throws",
         "result": true
       },
       {
-        "title": "可多次为子View和父View设置同样背景"
+        "title": "方法内部，抛出异常实例对象为throws",
+        "result": false
       },
       {
-        "title": "灵活使用布局，推荐merge、ViewStub来优化布局，尽可能多的减少UI布局层级",
-        "result": true
-      },
-      {
-        "title": "不能在Activity没有完全显示时显示PopupWindow和Dialog",
+        "title": "自定义异常要做到“认知对等”，即：抛出者和接收者要保持对自定义异常的认知统一，接收方需要知道这种异常的含义和对应的处理方案",
         "result": true
       }
     ]
   },
   {
     "id": 16,
-    "title": "关于嵌套Fragment的说法正确的有()",
+    "title": "如何处理单元测试产生的数据，下列哪些说法是正确的？",
     "multi": true,
     "choose": [
       {
-        "title": "为了避免复杂性和潜在bug,尽量不要使用嵌套Fragment",
+        "title": "测试数据入库时加特殊前缀标识。",
         "result": true
       },
       {
-        "title": "可以在xm文件中定义嵌套Fragment"
-      },
-      {
-        "title": "使用嵌套Fragment时应注意区分Activity的FragmentManager和宿主Fragment的FragmentManager,否则可能导致错误",
+        "title": "测试数据使用独立的测试库。",
         "result": true
       },
       {
-        "title": "嵌套Fragment的onActⅳityResult方法可能不会被正常调用",
+        "title": "自动回滚单元测试产生的脏数据。",
         "result": true
+      },
+      {
+        "title": "无须区别，统一在业务代码中进行判断和识别。",
+        "result": false
       }
     ]
   },
   {
     "id": 17,
-    "title": "以下关于Activity#onPause()方法中可以进行的操作是()。",
-    "multi": false,
+    "title": "关于并发处理，下列哪些说法符合《阿里巴巴Java开发手册》",
+    "multi": true,
     "choose": [
       {
-        "title": "注销广播unregisterReceiver()",
+        "title": "线程资源必须通过线程池提供，不允许在应用中自行显式创建线程。",
         "result": true
       },
       {
-        "title": "发送同步网络请求"
+        "title": "同步处理时，能锁部分代码区块的情况下不要锁整个方法；高并发时，同步调用应该考虑到性能损耗。",
+        "result": true
       },
       {
-        "title": "通过FragmentTransaction的方式添加Fragment"
+        "title": "创建线程或线程池时，推荐给线程指定一个有意义的名称，方便出错时回溯。",
+        "result": true
       },
       {
-        "title": "进行磁盘IO操作"
+        "title": "推荐使用Executors.newFixedThreadPool(int x)生成指定大小的线程池。(线程池不允许使用 Executors 去创建，而是通过 ThreadPoolExecutor 的方式)",
+        "result": false
       }
     ]
   },
   {
     "id": 18,
-    "title": "以下关于Activty页面布局错误的做法是()",
-    "multi": false,
+    "title": "下列哪些说法符合《阿里巴巴Java开发手册》",
+    "multi": true,
     "choose": [
       {
-        "title": "只要实现UI功能,不必关心ViewHirerachy",
+        "title": "对于“明确停止使用的代码和配置”，如方法、变量、类、配置文件、动态配置属性等要坚决从程序中清理出去，避免造成过多垃圾。",
         "result": true
       },
       {
-        "title": "尽量少使用ViewGroup嵌套"
+        "title": "永久弃用的代码段注释掉即可，即不用加任何注释。",
+        "result": false
       },
       {
-        "title": "减少LinearLayout的嵌套层级"
+        "title": "对于暂时被注释掉，后续可能恢复使用的代码片断，在注释代码上方，统一规定使用三 个斜杠(///)来说明注释掉代码的理由。",
+        "result": true
       },
       {
-        "title": "同样UI,使用RelativeLayou替代LinearLayout以减少view层级"
+        "title": "不要在视图模板中加入任何复杂的逻辑。",
+        "result": true
       }
     ]
   },
   {
     "id": 19,
-    "title": "在Listview中加载图片时,需要注意()",
+    "title": "关于分页查询，下列哪些说法符合《阿里巴巴Java开发手册》",
     "multi": true,
     "choose": [
       {
-        "title": "做好内存控制,避免内布溢出",
+        "title": "分页查询，当统计的count为0时，应该直接返回，不要再执行分页查询语句。",
         "result": true
       },
       {
-        "title": "做好缓存以及淘汰机制,避免重复创建",
+        "title": "iBATIS自带的queryForList(String statementName,int start,int size)分页接口有性能隐患，不允许使用。",
         "result": true
       },
       {
-        "title": "为了UI效率,应该把展示过的图片都缓存起来",
+        "title": "定义明确的sql查询语句，通过传入参数start和size来实现分页逻辑。",
         "result": true
       },
       {
-        "title": "当图片不可见后,应该立即释放,避免内存占用过高",
-        "result": true
+        "title": "可使用存储过程写分页逻辑，提高效率。",
+        "result": false
       }
     ]
   },
   {
     "id": 20,
-    "title": "在主线程加载大图片会导致()",
-    "multi": false,
+    "title": "根据《阿里巴巴Java开发手册》，以下功能必须进行水平权限控制校验的有",
+    "multi": true,
     "choose": [
       {
-        "title": "内存溢出"
-      },
-      {
-        "title": "UI卡顿",
+        "title": "订单详情页面。",
         "result": true
       },
       {
-        "title": "崩溃"
+        "title": "类目管理后台。",
+        "result": true
       },
       {
-        "title": "图片错乱"
+        "title": "店铺装修后台。",
+        "result": true
+      },
+      {
+        "title": "订单付款页面。",
+        "result": true
       }
     ]
   },
   {
     "id": 21,
-    "title": "关于ViewHolder的说法错误的是()",
-    "multi": false,
+    "title": "关于数据库中NULL的描述，下列哪些说法符合《阿里巴巴Java开发手册》",
+    "multi": true,
     "choose": [
       {
-        "title": "使用ViewHolder主要是为了避免多次创建vew,降低内存占用并提升UI流畅度"
+        "title": "NULL=NULL的返回结果为true",
+        "result": false
       },
       {
-        "title": "ViewHolder仅设置需要更新的属性即可",
+        "title": "NULL与任何值的比较结果都为NULL。",
         "result": true
       },
       {
-        "title": "ViewHolder不仅适用于ListView的场景"
+        "title": "NULL<>1的返回结果为true。",
+        "result": false
       },
       {
-        "title": "getView中需要更新ViewHolder的所有属性"
+        "title": "当某一列的值全是NULL时，sum(col)的返回结果为NULL。",
+        "result": true
       }
     ]
   },
   {
     "id": 22,
-    "title": "关于RGB_565和RGB_888,以下说法正确的是()",
+    "title": "关于接口使用抛异常还是返回错误码，下列哪些说法符合《阿里巴巴Java开发手册》",
     "multi": true,
     "choose": [
       {
-        "title": "RGB_555比RGB_888清晰"
-      },
-      {
-        "title": "RGB_888比RGB_565清晰",
+        "title": "向公司外部提供的http/api接口，推荐使用“错误码”方式返回异常或者错误信息。",
         "result": true
       },
       {
-        "title": "RGB_565占用内存更少",
+        "title": "对于应用内部的方法调用，推荐使用“抛出异常”的方式处理异常或者错误信息。",
         "result": true
       },
       {
-        "title": "若视觉效果相似,应尽可能使用RGB_565",
+        "title": "跨应用的RPC调用，推荐使用将“错误码”和“错误简短信息”封装成Result的方式进行返回。",
+        "result": true
+      },
+      {
+        "title": "对外提供的接口，一定要保证逻辑健壮性：尽量避免空指针等技术类异常；对于业务类异常要做好错误码或者异常信息的封装。",
         "result": true
       }
     ]
   },
   {
     "id": 23,
-    "title": "加密算法:使用不安全的Hash算法加密信息,存在被破解的风险,建议使用()等安全性更高的Hash算法",
+    "title": "关于类的序列化，下列说法哪些是正确的",
     "multi": false,
     "choose": [
       {
-        "title": "SHA-256",
+        "title": "类的序列化与serialVersionUID毫无关系。",
+        "result": false
+      },
+      {
+        "title": "如果完全不兼容升级，不需要修改serialVersionUID值。",
+        "result": false
+      },
+      {
+        "title": "POJO类的serialVersionUID不一致会编译出错。",
+        "result": false
+      },
+      {
+        "title": "POJO类的serialVersionUID不一致会抛出序列化运行时异常。",
         "result": true
-      },
-      {
-        "title": "MD5"
-      },
-      {
-        "title": "SHA-1"
-      },
-      {
-        "title": "SHA-128"
       }
     ]
   },
   {
     "id": 24,
-    "title": "以下哪些方式可以避免引发全局layout刷新?",
+    "title": "关于Java的接口描述，下列哪些说法符合《阿里巴巴Java开发手册》",
     "multi": true,
     "choose": [
       {
-        "title": "设置固定的View大小的宽高",
+        "title": "在接口类中的方法和属性使用public修饰符。",
+        "result": false
+      },
+      {
+        "title": "对于Service类，内部的实现类加Impl的后缀与接口区别。例如：ProductServiceImpl实现ProductService接口。",
         "result": true
       },
       {
-        "title": "调用View的layout方法修改位置",
+        "title": "对于Service类，基于SOA的理念，是以接口方式暴露服务。",
         "result": true
       },
       {
-        "title": "通过修改Canvas位置并且调用invalidate(int l,int t，int r，int b）等方式限定刷新区域",
-        "result": true
-      },
-      {
-        "title": "通过设置一个是否允许requestLayout的变量，然后重写控件的requestlayout、onSizeChanged方法，判断控件的大小没有改变的情况下，当进入requestLayout的时候，直接返回而不调用super的requestLayout方法",
+        "title": "尽量不在接口里定义变量，如果一定要定义变量，肯定是与接口方法相关，而且是整个应用的基础常量。",
         "result": true
       }
     ]
   },
   {
     "id": 25,
-    "title": "当添加Fragment时，以下做法正确的是()",
-    "multi": true,
+    "title": "集合在遍历过程中，有时需要对符合一定条件的元素进行删除，下列哪些说法是正确的",
+    "multi": false,
     "choose": [
       {
-        "title": "避免使用FragmentTransaction#commitAllowingstateLoss()",
+        "title": "在 foreach 循环里进行元素的 remove操作。",
+        "result": false
+      },
+      {
+        "title": "使用Iterator方式，如果有并发，需要对Iterator对象加锁。",
         "result": true
       },
       {
-        "title": "在Activity#onSaveInstancestate()方法之后调用FragmentTransaction#commit()没有问题"
+        "title": "Iterator进行元素的删除操作，绝对是线程安全的。",
+        "result": false
       },
       {
-        "title": "使用FragmentTransaction#commitllowingstateLoss()会导致用户UI状态丢失，降低用户体验",
-        "result": true
-      },
-      {
-        "title": "FragmentTransaction#commit()调用时机不对可能会导致java.lang.lllegaIStateException",
-        "result": true
+        "title": "Java无法实现在遍历时，进行删除元素操作。",
+        "result": false
       }
     ]
   },
   {
     "id": 26,
-    "title": "在Activity进行较大数据量的通信时，以下选项中建议使用的有()",
+    "title": "关于基本数据类型与包装数据类型的使用标准，下列哪些说法符合《阿里巴巴Java开发手册》",
     "multi": true,
     "choose": [
       {
-        "title": "Intent+Serializable"
-      },
-      {
-        "title": "Intent+Parcelable"
-      },
-      {
-        "title": "EventBus",
+        "title": "所有的POJO类属性必须使用包装数据类型。",
         "result": true
       },
       {
-        "title": "文件",
+        "title": "RPC方法的返回值和参数必须使用包装数据类型。",
+        "result": true
+      },
+      {
+        "title": "因为JAVA的自动装箱与拆箱机制，不需要根据场景来区分数据类型。",
+        "result": false
+      },
+      {
+        "title": "所有的局部变量推荐使用基本数据类型。",
         "result": true
       }
     ]
   },
   {
     "id": 27,
-    "title": "以下关于文件与数据库说法正确的是（）",
+    "title": "关于索引的设计，下列哪些说法符合《阿里巴巴Java开发手册》",
     "multi": true,
     "choose": [
       {
-        "title": "当使用外部存储时，必须检查外部存储的可用性。",
+        "title": "对varchar类型的字段建立索引，必须指定索引长度。",
         "result": true
       },
       {
-        "title": "任何时候不要硬编码文件路径，请使用Android文件系统API访问。",
+        "title": "对varchar类型的字段建立索引，不需要指定索引长度，这样索引区分度最好。",
+        "result": false
+      },
+      {
+        "title": "业务上具有唯一特性的字段（含组合字段），必须指定唯一索引。",
         "result": true
       },
       {
-        "title": "数据库Cursor必须确保使用完后关闭，以免内存泄漏。",
-        "result": true
-      },
-      {
-        "title": "多线程操作写入数据库时，需要使用事务，以免出现同步问题。",
+        "title": "建复合索引时，一般选择区分度高的字段放在最左列。",
         "result": true
       }
     ]
   },
   {
     "id": 28,
-    "title": "关于动画，以下说法正确的是（）",
+    "title": "关于二方库版本号的命名方式，下列哪些说法符合《阿里巴巴Java开发手册》",
     "multi": true,
     "choose": [
       {
-        "title": "Activity不可见时,应该及时关闭动画。",
+        "title": "版本号命名格式：主版本号.次版本号.修订号。",
         "result": true
       },
       {
-        "title": "在动画结束的回调中，应该判断需要用到的资源是否已经被释放了",
+        "title": "主版本号:产品方向改变，或者大规模API不兼容，或者架构不兼容升级。",
         "result": true
       },
       {
-        "title": "Animation.AnimationListener#onAnimationEnd()回调可以准确可靠地告知动画结束时机"
+        "title": "次版本号:保持相对兼容性，增加主要功能特性，影响范围极小的API不兼容修改。",
+        "result": true
       },
       {
-        "title": "应该根据设备情况选择性开启复杂动画",
+        "title": "修订号:保持完全兼容性，修复BUG、新增次要功能特性等。",
         "result": true
       }
     ]
   },
   {
     "id": 29,
-    "title": "为便于随Activity生命周期管理对话框/弹出浮层的生命周期，推荐使用以下哪种view?",
-    "multi": false,
+    "title": "关于索引的使用，下列哪些说法是正确的",
+    "multi": true,
     "choose": [
       {
-        "title": "DialogFragment",
+        "title": "查询语句 WHERE a+1 = 5 可以利用a索引。",
+        "result": false
+      },
+      {
+        "title": "查询语句WHERE date_format(gmt_create, '%Y-%m-%d') = '2016-11-11'无法利用gmt_create索引。",
         "result": true
       },
       {
-        "title": "AlertDialog"
+        "title": "当 c 列类型为 char 时，查询语句 WHERE c = 5 无法利用c索引。",
+        "result": true
       },
       {
-        "title": "Dialog"
-      },
-      {
-        "title": "PopupWindow"
+        "title": "索引字段使用时不能进行函数运算。",
+        "result": true
       }
     ]
   },
   {
     "id": 30,
-    "title": "关于局部频繁刷新View，如何避免全局重新布局的做法正确的是（）",
+    "title": "关于生产环境的日志文件，下列哪些说法符合《阿里巴巴Java开发手册》",
     "multi": true,
     "choose": [
       {
-        "title": "需刷新的View严格指明宽高，比如倒计时组件",
+        "title": "异常信息应该包括两类信息：案发现场信息和异常堆栈信息。",
         "result": true
       },
       {
-        "title": "调用View#layout()方法更新位置，比如弹幕",
+        "title": "日志文件推荐至少保存15天，因为有些异常具备以“周”为频次发生的特点。",
         "result": true
       },
       {
-        "title": "使用View#invalidate(int l，int t，int r，int b）强制刷新部分区域",
+        "title": "避免重复打印日志，浪费磁盘空间，务必在log4j.xml中设置additivity=false。",
         "result": true
       },
       {
-        "title": "在某些局部刷新的场景下，强制关闭自定义View#requestLayout功能",
+        "title": "错误日志和业务日志尽量分开存放。",
         "result": true
       }
     ]
   },
   {
     "id": 31,
-    "title": "在应用内广播敏感信息时，下面说法正确的是（）",
+    "title": "关于代码注释，下列哪些说法符合《阿里巴巴Java开发手册》",
     "multi": true,
     "choose": [
       {
-        "title": "可以通过sendBroadcast()发送隐式广播在应用内传递敏感信息"
-      },
-      {
-        "title": "可以通过sendOrderedBroadcast()方法在应用内传递敏感信息"
-      },
-      {
-        "title": "如果消息仅限于应用内，应该使用LocalBroadcastManager#sendBroadcast()发送敏感消息",
+        "title": "特殊注释标记，请注明标记人与标记时间。",
         "result": true
       },
       {
-        "title": "接受敏感信息的静态BroadcastReceiver如果没有特殊原因，尽量不设置为export",
+        "title": "待办事宜（TODO）:（ [标记人，标记时间，[预计处理时间]）",
+        "result": true
+      },
+      {
+        "title": "在注释中用FIXME标记某代码虽然实现了功能，但是实现的方法有待商榷，希望将来能改进",
+        "result": false
+      },
+      {
+        "title": "在注释中用FIXME标记某代码是错误的，而且不能工作，需要及时纠正的情况",
         "result": true
       }
     ]
   },
   {
     "id": 32,
-    "title": "在文本大小设置中，使用以下哪种单位会使显示的字体大小会受系统设置里字体大小的影响？",
-    "multi": false,
+    "title": "关于MySQL性能优化的描述，下列哪些说法是正确的",
+    "multi": true,
     "choose": [
       {
-        "title": "dp"
-      },
-      {
-        "title": "sp",
+        "title": "主键查询优先于二级索引查询。",
         "result": true
       },
       {
-        "title": "px"
+        "title": "表连接有一定的代价，故表连接数量越少越好。",
+        "result": true
       },
       {
-        "title": "pt"
+        "title": "一般情况下，二级索引扫描优先于全表扫描。",
+        "result": true
+      },
+      {
+        "title": "可以使用通过索引避免排序代价。",
+        "result": true
       }
     ]
   },
   {
     "id": 33,
-    "title": "以下做法错误的有哪些？",
+    "title": "关于索引的设计和使用，下列哪些说法是正确的",
     "multi": true,
     "choose": [
       {
-        "title": "使用Textview,编写倒计时组件时，使用wrap_content设置文本大小解决适配问题",
+        "title": "若查询条件中不包含索引的最左列，则无法使用索引。",
         "result": true
       },
       {
-        "title": "为避免主线程卡顿，在非UI线程绌ImageView设置背景图片",
+        "title": "对于范围查询，只能利用索引的最左列。",
+        "result": false
+      },
+      {
+        "title": "对于order by A或group by A语句，在A上建立索引，可以避免排序。",
+        "result": false
+      },
+      {
+        "title": "对于多列排序，需要所有所有列排序方向一致，才能利用索引。",
         "result": true
-      },
-      {
-        "title": "为解决连续显示Toast时不能取消上一次Toast消息的情况，使用一个全局的Toast对象"
-      },
-      {
-        "title": "为共享数据，可使用Intent进行数据传输"
       }
     ]
   },
   {
     "id": 34,
-    "title": "关于应用内广播做法正确的是()",
-    "multi": false,
+    "title": "关于类命名，下列哪些说法符合《阿里巴巴Java开发手册》",
+    "multi": true,
     "choose": [
       {
-        "title": "使用隐式Intent启动广播"
-      },
-      {
-        "title": "receiver组件定义属性android:exported=true"
-      },
-      {
-        "title": "使用LocalBroadcastManager处理应用内广播",
+        "title": "抽象类命名使用Abstract或Base开头。",
         "result": true
       },
       {
-        "title": "任何形式的广播都可以"
+        "title": "异常类命名使用Exception结尾。",
+        "result": true
+      },
+      {
+        "title": "测试类命名以它要测试的类的名称开始，以Test结尾。",
+        "result": true
+      },
+      {
+        "title": "如果使用到了设计模式，建议在类名中体现出具体模式。例如代理模式的类命名：LoginProxy；观察者模式命名：ResourceObserver。",
+        "result": true
       }
     ]
   },
   {
     "id": 35,
-    "title": "Id资源定义推荐驼峰命名法，View组件的资源id应以View的缩写作为前缀，某些特殊控件可以使用小写字母加下划线进行命名，以下id资源的命名不符合规范的是()",
-    "multi": false,
+    "title": "关于数据库模糊检索的描述，下列哪些说法符合《阿里巴巴Java开发手册》",
+    "multi": true,
     "choose": [
       {
-        "title": "某个ImageView的id定义为：<ImageView id=\"@+id/ivUserAvatar\"…>...</ImageView>"
-      },
-      {
-        "title": "某个TextView的id定义为：<TextView id=\"@+id/userNameI\"…>…</TextView>",
+        "title": "绝对禁止左模糊。",
         "result": true
       },
       {
-        "title": "某个Button的id定义为：<Button id=\"@+id/btnLogin\">…</Button>"
+        "title": "绝对禁止全模糊。",
+        "result": true
       },
       {
-        "title": "某个ProgressBar的id定义为：<ProgressBar android:id=\"@+id/progress_bar_login\">...</ProgressBar>"
+        "title": "绝对禁止右模糊。",
+        "result": false
+      },
+      {
+        "title": "全模糊或左模糊查询需求，优先使用搜索引擎。",
+        "result": true
       }
     ]
   },
   {
     "id": 36,
-    "title": "使用()代替RGB_888，在不怎么降低视觉效果的前提下，减少内存占用",
-    "multi": false,
+    "title": "关于代码注释，下列哪些说法符合《阿里巴巴Java开发手册》",
+    "multi": true,
     "choose": [
       {
-        "title": "RGB_565",
+        "title": "所有的抽象方法（包括接口中的方法）必须要用javadoc注释。",
         "result": true
       },
       {
-        "title": "ALPHA_8"
+        "title": "所有的方法，包括私有方法，最好都增加注释，有总比没有强。",
+        "result": false
       },
       {
-        "title": "ARGB_4444"
+        "title": "过多过滥的注释，代码的逻辑一旦修改，修改注释是相当大的负担。",
+        "result": true
       },
       {
-        "title": "ARGB_8888"
+        "title": "我的命名和代码结构非常好，可以减少注释的内容。",
+        "result": true
       }
     ]
   },
   {
     "id": 37,
-    "title": "Activity间通过隐式Intent跳转时，需要注意的是（）",
+    "title": "关于checked/unchecked exception，下列哪些说法是正确的",
     "multi": true,
     "choose": [
       {
-        "title": "为了防应用之间的影响，隐式Intent中Action定义尽量更详细一些",
+        "title": "继承java.lang.Error的类属于checked exception。",
+        "result": false
+      },
+      {
+        "title": "checked异常继承java.lang.Exception类。",
         "result": true
       },
       {
-        "title": "为了避免找不到相应的Activity造成应用异常，在发出intent之前，必须通过resolveActivity检查",
+        "title": "unchecked异常继承java.lang.RuntimeException类。",
         "result": true
       },
       {
-        "title": "在隐式Intent跳转时，不需要进行resolveActivity检查，直接CatchException就可以了"
-      },
-      {
-        "title": "调用系统功能例如拨打电话、发邮件等，需要遵守标准的URI格式",
+        "title": "NullPointerException , IllegalArgumentException属于unchecked exception。",
         "result": true
       }
     ]
   },
   {
     "id": 38,
-    "title": "以下说法中正确的是",
-    "multi": true,
+    "title": "关于Map类型集合的遍历方式，下列哪些说法是正确的",
+    "multi": false,
     "choose": [
       {
-        "title": "密钥加密存储或者经过变形平理后用于加解密运算，切勿硬编码到代码中。",
-        "result": true
+        "title": "Map类型的实现类都同时实现了Iterator接口。",
+        "result": false
       },
       {
-        "title": "Webview应设置WebView#getSettings()#setAllowFileAccess(false）、WebView#getSettings()#setAllowFileAccessFromFileURLs(false）、WebView#getSettings()#setAllowUniversaIAccessFromFiIeURLs(false)，阻止fileschemeURL的访问",
-        "result": true
+        "title": "使用foreach进行遍历。",
+        "result": false
       },
       {
-        "title": "不要使用loopback来通信敏感信息",
-        "result": true
+        "title": "推荐使用keySet进行遍历。",
+        "result": false
       },
       {
-        "title": "Android5.0以后安全性要求较高的应用应该使用window.setFlag(LayoutParam.FLAG_SECURE）禁止录屏",
+        "title": "推荐使用entrySet进行遍历。",
         "result": true
       }
     ]
   },
   {
     "id": 39,
-    "title": "关于service启动，下列说法正确的是（）",
+    "title": "关于变量、方法名、包的命名，下列哪些说法符合《阿里巴巴Java开发手册》",
     "multi": true,
     "choose": [
       {
-        "title": "Service都应该声明IntentFilter"
-      },
-      {
-        "title": "推荐使用隐式Intert启动Service"
-      },
-      {
-        "title": "如果使用隐式Intent，推荐使用Intent#setPackage()方法设置Intent指定包名",
+        "title": "POJO类中的任何布尔类型的变量，都不要加is，因为部分框架解析时有可能会出现序列化错误。",
         "result": true
       },
       {
-        "title": "没有特殊原因，总是使用显式Intent启动或绑定Service",
+        "title": "包名统一使用单数形式，如：com.alibaba.mpp.util。",
+        "result": true
+      },
+      {
+        "title": "中括号是数组类型的一部分，数组定义如下：String[] args; 不要误写为String args[]；",
+        "result": true
+      },
+      {
+        "title": "Service/DAO层方法命名可以参考规约，例如：删除的方法推荐使用remove或delete做前缀。",
         "result": true
       }
     ]
   },
   {
     "id": 40,
-    "title": "执行SQL语句时，应使用（)，以免SQL注入风险",
+    "title": "关于常量定义，下列哪些说法符合《阿里巴巴Java开发手册》",
     "multi": true,
     "choose": [
       {
-        "title": "SQLiteDatabase#insert()",
+        "title": "不允许出现任何魔法值（即未经预先定义的常量）直接出现在代码中。",
         "result": true
       },
       {
-        "title": "SQLiteDatabase#update()",
+        "title": "魔法值是指程序中随意定义并赋值的变量值，如果代码编写者明白变量值意义是可以任意使用的，例如在代码中写if(status == 3) return error;符合规范。",
+        "result": false
+      },
+      {
+        "title": "如果变量值仅在一个范围内变化推荐用Enum类。",
         "result": true
       },
       {
-        "title": "SQLiteDatabase#delete()",
-        "result": true
-      },
-      {
-        "title": "SQLiteDatabase#execSQL()"
+        "title": "在程序中，一律禁止使用枚举类型。",
+        "result": false
       }
     ]
   },
   {
     "id": 41,
-    "title": "通过Intent在Android基础组件之间传递大数据可能导致( )",
-    "multi": false,
+    "title": "关于maven依赖、仲裁、规则，下列哪些说法是正确的：",
+    "multi": true,
     "choose": [
       {
-        "title": "空指针异常"
-      },
-      {
-        "title": "OOM",
+        "title": "<dependencies>的依赖会默认传递给子项目。",
         "result": true
       },
       {
-        "title": "ANR"
+        "title": "<dependencies>的依赖绝对不会传递给子项目。",
+        "result": false
       },
       {
-        "title": "无异常"
+        "title": "在<dependencyManagement>中指定版本号。",
+        "result": true
+      },
+      {
+        "title": "避免在不同的子项目，声明同一个二方库的不同版本号。",
+        "result": true
       }
     ]
   },
   {
     "id": 42,
-    "title": "以下color资源命名不符合规范的有( )",
-    "multi": true,
+    "title": "关于二方库升级，下列哪些说法是正确的",
+    "multi": false,
     "choose": [
       {
-        "title": "<color name=“loadingdialogbg”>#33b5e5e5</color>",
+        "title": "升级二方库只是改个版本号，不需要关联功能的回归。",
+        "result": false
+      },
+      {
+        "title": "升级二方库需要比对仲裁结果的差异，谨慎评估。",
         "result": true
       },
       {
-        "title": "<color name=“live_reward_btn_bg”>#33b5e5e5</color>"
+        "title": "升级二方库，绝对不会影响到其它二方库的版本号。",
+        "result": false
       },
       {
-        "title": "<color name=“live_reward_btn_bg”>#b5e5e5</color>"
-      },
-      {
-        "title": "<color name=“live_reward_btn_bg”>#333</color>",
-        "result": true
-      },
-      {
-        "title": "<color name=“live_reward_btn_bg”>#00333333</color>"
+        "title": "只要此二方库负责人保证说不会有任何影响，即可大胆升级，直接发布上线。",
+        "result": false
       }
     ]
   },
   {
     "id": 43,
-    "title": "Activity#onSaveInstancestate( )方法中，适合执行的操作有 ",
-    "multi": false,
+    "title": "关于表字段和索引，下列哪些说法符合《阿里巴巴Java开发手册》",
+    "multi": true,
     "choose": [
       {
-        "title": "文件写入"
-      },
-      {
-        "title": "更新Sqllite"
-      },
-      {
-        "title": "保存UI控件属性",
+        "title": "表字段注释，如果修改字段含义或对字段表示的状态追加时，需要及时更新。",
         "result": true
       },
       {
-        "title": "更新SharedPreferences"
+        "title": "合适的字符存储长度，不但节约数据库表空间、节约索引存储，更重要的是提升检索速度。",
+        "result": true
+      },
+      {
+        "title": "针对表的每个字段都增加索引，加快查询速度。",
+        "result": false
+      },
+      {
+        "title": "字段的区分度越高，索引的查找速度越快。",
+        "result": true
       }
     ]
   },
   {
     "id": 44,
-    "title": "某个直播业务模块名称为live，请问其Android工程中res目录下资源名称符合规范的有( )。",
-    "multi": true,
+    "title": "关于测试代码的覆盖率，下列哪些说法是正确的？",
+    "multi": false,
     "choose": [
       {
-        "title": "live_activity_main_.xml",
+        "title": "路径覆盖是最强覆盖，符合路径覆盖且测试全部通过，程序绝对没有问题。",
+        "result": false
+      },
+      {
+        "title": "语句覆盖度是最弱的覆盖度量方式。",
         "result": true
       },
       {
-        "title": "popup_anim.xml"
+        "title": "分支覆盖与条件覆盖其实是一回事。",
+        "result": false
       },
       {
-        "title": "live_loading_icon.xml",
-        "result": true
-      },
-      {
-        "title": "navigation_menu.xml"
+        "title": "判定条件覆盖与路径覆盖其实是一回事。",
+        "result": false
       }
     ]
   },
   {
     "id": 45,
-    "title": "多进程模型的APP，应该注意哪些( )",
+    "title": "Hashtable，HashMap, ConcurrentHashMap都是Map的实现类，它们在处理null值的存储上有细微的区别，下列哪些说法是正确的",
     "multi": true,
     "choose": [
       {
-        "title": "在Application的业务初始化代码中加入进程判断，确保只在自己需要的进程初始化。特别是后台进程减少不必要的业务初始化",
+        "title": "Hashtable的KV都不可以为null。",
         "result": true
       },
       {
-        "title": "禁止在多进程之间用SharedPreferences共享数据，虽然可以(MODE_MULTI_PROCESS),但官方已不推荐",
+        "title": "HashMap的KV都可以为null。",
         "result": true
       },
       {
-        "title": "多进程容易导致内存不足"
+        "title": "HashMap的K不可以为null，V可以为null。",
+        "result": false
       },
       {
-        "title": "多进程Crash率会升高"
+        "title": "ConcurrentHashMap的KV都不可以为null。",
+        "result": true
       }
     ]
   },
   {
     "id": 46,
-    "title": "Activity间隐式Intent进行跳转时，建议先使用PackageManager#resolveActivity( )判断是能够跳转成功，是为了避免以下哪种Runtime异常？",
-    "multi": false,
+    "title": "关于数据库命名规则，下列哪些说法符合《阿里巴巴Java开发手册》",
+    "multi": true,
     "choose": [
       {
-        "title": "SendIntentException"
+        "title": "数据库库名和表名没有规定，可任意取名，只要方便记忆即可。",
+        "result": false
       },
       {
-        "title": "SecurityException"
-      },
-      {
-        "title": "ActivityNotFoundException",
+        "title": "库名应该尽量与应用名称保持一致，表的命名最好是业务名称_表名的方式。",
         "result": true
       },
       {
-        "title": "NameNotFoundException"
+        "title": "无论是库名还是表名都禁用保留字，如desc、match、range等。",
+        "result": true
+      },
+      {
+        "title": "表名、字段名必须使用小写字母或数字。",
+        "result": true
       }
     ]
   },
   {
     "id": 47,
-    "title": "当应用开发过程中需要使用BroadcastReceiver进行广播处理的时候，以下操作错误的是( )。",
-    "multi": false,
+    "title": "关于异常的处理方式，下列哪些说法是正确的",
+    "multi": true,
     "choose": [
       {
-        "title": "registerReceiver( )和unregisterReceiver( )不必成对出现",
+        "title": "为防止obj对象本身空指针异常，书写代码时应该注意加异常捕获处理，例如：try { obj.method() } catch(NullPointerException e){⋯⋯} 。",
+        "result": false
+      },
+      {
+        "title": "方法签名中，抛给调用者的关键字为throws",
         "result": true
       },
       {
-        "title": "使用LocalBroadcastManager处理应用内广播"
+        "title": "方法内部，抛出异常实例对象为throws",
+        "result": false
       },
       {
-        "title": "onReceive方法中对Intent数据做安全性校验，避免注入攻击"
-      },
-      {
-        "title": "尽量在Activity的inResume/onPuase方法中注册和注销广播"
+        "title": "自定义异常要做到“认知对等”，即：抛出者和接收者要保持对自定义异常的认知统一，接收方需要知道这种异常的含义和对应的处理方案。",
+        "result": true
       }
     ]
   },
   {
     "id": 48,
-    "title": "Executors返回的线程池对象有哪些弊端( )",
+    "title": "数组使用Arrays.asList转化为集合，下列说法哪些正确的",
     "multi": true,
     "choose": [
       {
-        "title": "可能会堆积大量的请求，从而导致OOM",
+        "title": "数组元素的修改，会影响到转化过来的集合。",
         "result": true
       },
       {
-        "title": "可能会堆积大量的线程，从而导致OOM",
+        "title": "数组元素的修改，不会影响到转化过来的集合。",
+        "result": false
+      },
+      {
+        "title": "对于转换过来的集合，它的 add/remove/clear 方法会抛出: UnsupportedOperationException。",
         "result": true
       },
       {
-        "title": "内部有Bug，稳定性差"
-      },
-      {
-        "title": "线程调度慢"
+        "title": "Arrays.asList 体现的是适配器模式，只是转换接口，后台的数据仍是数组。",
+        "result": true
       }
     ]
   },
   {
     "id": 49,
-    "title": "ThreadPoolExecutor设置线程存活时间(setKeepAliveTime)的目的是( )",
-    "multi": false,
+    "title": "关于文件编码和格式的设定，下列哪些说法符合《阿里巴巴Java开发手册》",
+    "multi": true,
     "choose": [
       {
-        "title": "设置的时间一到就回收线程"
+        "title": "IDE的text file encoding设置为GBK格式。",
+        "result": false
       },
       {
-        "title": "延长线程存活时间"
-      },
-      {
-        "title": "确保空闲时线程能被释放",
+        "title": "IDE的text file encoding设置为UTF-8格式。",
         "result": true
       },
       {
-        "title": "没有效果"
+        "title": "IDE中文件的换行符使用unix格式。",
+        "result": true
+      },
+      {
+        "title": "IDE中文件的换行符使用windows格式。",
+        "result": false
       }
     ]
   },
   {
     "id": 50,
-    "title": "以下关于BroadcastReceiver#onReceive( )的说法正确的是( )",
+    "title": "关于数据库是与否概念的列的命名方式，下列哪些说法符合《阿里巴巴Java开发手册》",
     "multi": true,
     "choose": [
       {
-        "title": "该方法可以执行IO操作"
+        "title": "对于是与否概念的列名，必须使用can_abc 来表示。",
+        "result": false
       },
       {
-        "title": "如果该方法耗时超过10s，则由可能会被系统回收",
+        "title": "对于是与否概念的列名，必须使用is_abc 来表示。",
         "result": true
       },
       {
-        "title": "该方法在Main Thread执行",
-        "result": true
+        "title": "数据类型是varchar(1)（ Y表示是，N表示否）。",
+        "result": false
       },
       {
-        "title": "可以通过android.content.Context#Receiver(BroadcastReceiver,IntentFilter,String,android.os.Handler)方法让onReceive方法在非MainThread执行",
+        "title": "数据类型是unsigned tiny int.（ 1表示是，0表示否）。",
         "result": true
       }
     ]
   },
   {
     "id": 51,
-    "title": "以下说法正确的是( )",
+    "title": "以下关于格式规约的说法，正确的有哪些",
     "multi": true,
     "choose": [
       {
-        "title": "当时有外部存储时，必须检查外部存储的可用性",
+        "title": "代码块缩进4个空格，如果使用tab缩进，请设置成1个tab为4个空格；",
         "result": true
       },
       {
-        "title": "本地加密秘钥不能硬编码在代码中，更不能使用SharedPreferences等本地持久化机制存储。应选择Android自身的秘钥库(KeyStore)机制或者其他安全性更高的安全解决方案保存",
-        "result": true
+        "title": "代码块缩进5个空格，如果使用tab缩进，请设置成1个tab为5个空格。",
+        "result": false
       },
       {
-        "title": "子线程中不能更新界面。更新界面必须在主线程中进行，网络操作不能再主线程中调用",
-        "result": true
+        "title": "为了保持代码美观，《手册》强烈推荐增加若干空格，使某一行的变量与相邻对应位置的变量对齐。",
+        "result": false
       },
       {
-        "title": "应用程序在加解密时，使用硬编码在程序中的秘钥。攻击者通过反编译拿到秘钥可以轻易破解APP通信数据",
+        "title": "方法体内的执行语句组、变量的定义语句组、不同的业务逻辑之间或者不同的语义之间推荐插入一个空行；相同业务逻辑和语义之间不需要插入空行。",
         "result": true
       }
     ]
   },
   {
     "id": 52,
-    "title": "Android APP在HTTPS通信中，验证策略需要改成( )模式",
-    "multi": false,
+    "title": "通过集合A.subList()获取子集合B，下列说法哪些是正确的",
+    "multi": true,
     "choose": [
       {
-        "title": "SSLSocketFactory.ALLOW_ALL_HOSTNAME_VERIFIER"
-      },
-      {
-        "title": "SSLSocketFactory.STRICT_HOSTNAME_VERIFIER",
+        "title": "返回的集合B没有实现Serializable接口，不能被序列化，所以不能应用于RPC场景。",
         "result": true
       },
       {
-        "title": "SSLSocketFactory.BROWSER_COMPATIBLE_HOSTNAME_VERIFIER"
+        "title": "在B集合中添加某个元素，那么A集合也会添加进去此元素。",
+        "result": true
       },
       {
-        "title": "以上均可"
+        "title": "集合A中元素的修改不会影响到集合B的任何操作。",
+        "result": false
+      },
+      {
+        "title": "对A元素个数的修改，会导致集合B的遍历产生ConcurrentModificationException 异常。",
+        "result": true
       }
     ]
   },
   {
     "id": 53,
-    "title": "APK中的png图片，应该怎么处理",
-    "multi": false,
+    "title": "关于捕获异常和抛异常，下列哪些说法符合《阿里巴巴Java开发手册》",
+    "multi": true,
     "choose": [
       {
-        "title": "为了符合Google的规范，将同一张图片分别放到drawable-hdpi、drawable-xhdpi、drawable-xxhdpi等目录下"
+        "title": "如果需要捕获不同类型异常，为了方便处理，可以使用catch(Exception e){...}。",
+        "result": false
       },
       {
-        "title": "图片用TinyPNG压缩，以减小包大小",
+        "title": "不要捕获异常后不处理，丢弃异常信息。",
         "result": true
       },
       {
-        "title": "尽可能使用高清大图"
+        "title": "捕获异常与抛异常，必须是完全匹配，或者捕获异常是抛异常的父类。",
+        "result": true
       },
       {
-        "title": "尽可能使用原图，避免图片失真"
+        "title": "异常定义时区分unchecked / checked 异常，避免直接使用RuntimeException抛出。",
+        "result": true
       }
     ]
   },
   {
     "id": 54,
-    "title": "使用Intent方式启动Service时应注意( )",
+    "title": "关于线程安全，下列哪些说法是正确的",
     "multi": true,
     "choose": [
       {
-        "title": "尽量使用显示Intent启动Service",
+        "title": "SimpleDateFormat 是线程不安全的类。",
         "result": true
       },
       {
-        "title": "Service组件避免定义Intent Filter",
+        "title": "SimpleDateFormat 是线程安全的类。",
+        "result": false
+      },
+      {
+        "title": "一般不要定义SimpleDateFormat的static变量，如果定义为static，必须保证线程安全。",
         "result": true
       },
       {
-        "title": "不必要外露的Service设置export=false",
-        "result": true
-      },
-      {
-        "title": "调用setPackage( )方法将Intent的解析结果限定在本应用内",
+        "title": "推荐使用Apache封装好的DateUtils和DateFormatUtils工具类，来处理时间日期转换问题。",
         "result": true
       }
     ]
   },
   {
     "id": 55,
-    "title": "以下关于Intent中携带敏感信息的说法正确的是( )",
+    "title": "为了更方便地进行单元测试，被测试的业务代码应避免以下哪些情况？",
     "multi": true,
     "choose": [
       {
-        "title": "隐式Intent中尽量不要携带敏感信息，避免被外部恶意程序注册的BroadcastReceiver劫持Intent",
+        "title": "构造方法中做的事情过多。",
         "result": true
       },
       {
-        "title": "使用LocalBroadcastManager处理含敏感信息的广播，避免Intent拦截和恶意注入",
+        "title": "存在过多的全局变量和静态方法。",
         "result": true
       },
       {
-        "title": "Intent的数据内容不必关心。只要应用功能测试通过就可以"
-      },
-      {
-        "title": "如果需要携带敏感信息。Intent需要使用显示方式。指明目标Component",
+        "title": "存在过多的外部依赖。",
         "result": true
       },
       {
-        "title": "不必要导出的组件设置android:export=false",
+        "title": "存在过多的条件语句。",
         "result": true
       }
     ]
   },
   {
     "id": 56,
-    "title": "某个直播业务模块名称为live，当定义其布局文件( Layout)时，请问如下哪些资源文件名称不符合规范( )",
+    "title": "关于控制语句，下列哪些说法符合《阿里巴巴Java开发手册》",
     "multi": true,
     "choose": [
       {
-        "title": "live_activity_main_.xml"
-      },
-      {
-        "title": "base_fragment_.xml",
+        "title": "推荐 if-else的方式可以改写成卫语句的形式。",
         "result": true
       },
       {
-        "title": "live_dialog_loading.xml"
-      },
-      {
-        "title": "showaccountfragment.xml",
+        "title": "尽量减少try-catch 块内的逻辑，定义对象、变量、获取数据库连接等操作可以移到try-catch块外处理",
         "result": true
       },
       {
-        "title": "live_recycle_item_homepage.xml"
+        "title": "if ( condition) statements; 单行语句不需要使用大括号。",
+        "result": false
+      },
+      {
+        "title": "在一个switch块内，都必须包含一个default语句并且放在最后，即使它什么代码也没有。",
+        "result": true
       }
     ]
   },
   {
     "id": 57,
-    "title": "以下关于定义一个drawable文件的说法错误的是",
+    "title": "关于参数有效性验证，下列哪些说法符合《阿里巴巴Java开发手册》",
     "multi": true,
     "choose": [
       {
-        "title": "所有drawable文件都放在drawable目录，不区分屏幕密度",
+        "title": "防止page size过大导致内存溢出。",
         "result": true
       },
       {
-        "title": "为不同屏幕密度的设备都提供一组drawable"
+        "title": "防止正则输入源串拒绝服务ReDOS。",
+        "result": true
       },
       {
-        "title": "为了精简apk整包大小，在满足需求并且了解清楚用户设备分布的情况的前提下，只支持几种屏幕密度的drawable、比如仅定义xhdpi中的drawable文件"
+        "title": "防止任意重定向。",
+        "result": true
       },
       {
-        "title": "在xhdpi目录下定义live_reward_btn_pressed.png"
-      },
-      {
-        "title": "在xxxhdpi目录下放置不满足设备屏幕密度的小图",
+        "title": "预防 SQL 注入。",
         "result": true
       }
     ]
   },
   {
     "id": 58,
-    "title": "使用gif要注意什么",
+    "title": "关于变量和常量定义，下列哪些符合《阿里巴巴Java开发手册》",
     "multi": true,
     "choose": [
       {
-        "title": "和普通图片样，没有太多特殊"
-      },
-      {
-        "title": "需要注意单个gif的大小",
+        "title": "Long a=2L；//大写的L",
         "result": true
       },
       {
-        "title": "注意控制单个页面同时播放的gif个数",
-        "result": true
+        "title": "Long a=2l; //小写的l",
+        "result": false
       },
       {
-        "title": "gif内存占用更大，需要注意控制内存",
+        "title": "常量只定义一次，不再赋值，所以不需要命名规范。",
+        "result": false
+      },
+      {
+        "title": "不要使用一个常量类维护所有常量，应该按常量功能进行归类，分开维护。",
         "result": true
       }
     ]
   },
   {
     "id": 59,
-    "title": "以下哪些操作可以在主线程执行",
+    "title": "在定义DO/DTO/VO/等POJO类时，对属性默认值的设定，下列哪些说法符合《阿里巴巴Java开发手册》",
     "multi": false,
     "choose": [
       {
-        "title": "更新界面",
+        "title": "String类型的默认值设定为空字符串。",
+        "result": false
+      },
+      {
+        "title": "Date类型的默认值设定为new Date()。",
+        "result": false
+      },
+      {
+        "title": "集合类型的默认值设定为Collections.EMPTY_LIST。",
+        "result": false
+      },
+      {
+        "title": "不要设定任何属性默认值。",
         "result": true
-      },
-      {
-        "title": "IO操作"
-      },
-      {
-        "title": "网络操作"
-      },
-      {
-        "title": "耗时逻辑"
       }
     ]
   },
   {
     "id": 60,
-    "title": "在Service中进行耗时操作，说法正确的是( )",
-    "multi": false,
+    "title": "关于二方库依赖的解析命令，下列哪些说法是正确的",
+    "multi": true,
     "choose": [
       {
-        "title": "在onStartCommand( )中可以执行耗时操作"
-      },
-      {
-        "title": "在onBind( )中可以执行耗时操作"
-      },
-      {
-        "title": "在onCreate( )中可以执行耗时操作"
-      },
-      {
-        "title": "在IntentService的onHandleIntent()中可以执行耗时操作",
+        "title": "mvn dependency:resolve 打印出已仲裁依赖的列表。",
         "result": true
+      },
+      {
+        "title": "mvn dependency:tree 打印工程整个的依赖树结构。",
+        "result": true
+      },
+      {
+        "title": "mvn dependency:tree -Dverbose -Dincludes=commons-lang 打印出与commons-lang相关的详细依赖。",
+        "result": true
+      },
+      {
+        "title": "mvn clean install 打印工程整个的依赖树结构，并部署到本地仓库中。",
+        "result": false
       }
     ]
   },
   {
     "id": 61,
-    "title": "以下哪种使用可能会造成内存问题",
-    "multi": true,
+    "title": "KV结构的集合，在处理null值的存储上有细微的区别，下列哪些说法是正确的",
+    "multi": false,
     "choose": [
       {
-        "title": "Application对象中存储大量缓存数据",
+        "title": "TreeMap的key不可以为null",
         "result": true
       },
       {
-        "title": "使用AnimationDrawable加载大量图片",
-        "result": true
+        "title": "TreeMap的key可以为null",
+        "result": false
       },
       {
-        "title": "使用Adapter时，使用了ViewHolder做缓存"
+        "title": "ConcurrentHashMap的key可以为null",
+        "result": false
       },
       {
-        "title": "在布局设计时，不能使用Scrollview包裹ListView/GridView/ExpandableListView"
+        "title": "ConcurrentHashMap的value可以为null",
+        "result": false
       }
     ]
   },
   {
     "id": 62,
-    "title": "关于Service启动，下列说法正确的是( )",
+    "title": "关于数据库中表相关的命名，下列哪些说法符合《阿里巴巴Java开发手册》",
     "multi": true,
     "choose": [
       {
-        "title": "Service都应该声明IntentFilter"
-      },
-      {
-        "title": "推荐使用隐式Intent启动Service"
-      },
-      {
-        "title": "如果使用隐式Intent，推荐使用Intent#setPackage( )方法设置Intent指定包名",
+        "title": "表名、字段名禁止出现数字开头，禁止两个下划线中间只出现数字。",
         "result": true
       },
       {
-        "title": "没有特殊原因，总是使用显示Intent启动或绑定Service",
+        "title": "表名不使用复数名词。",
+        "result": true
+      },
+      {
+        "title": "表必备三字段命名：id, gmt_create, gmt_modify。",
+        "result": false
+      },
+      {
+        "title": "表必备三字段命名：id, gmt_create, gmt_modified。",
         "result": true
       }
     ]
   },
   {
     "id": 63,
-    "title": "在Activity未初始化完成时，显示PopupWindow或者Dialog会导致如下哪种异常？",
-    "multi": false,
+    "title": "关于多线程并行处理定时任务的情况，下列哪些说法符合《阿里巴巴Java开发手册》",
+    "multi": true,
     "choose": [
       {
-        "title": "InflateException"
+        "title": "推荐使用Timer方式处理。",
+        "result": false
       },
       {
-        "title": "lllegaStateException"
-      },
-      {
-        "title": "BadTokenException",
+        "title": "推荐使用ScheduledExecutorService方式处理。",
         "result": true
       },
       {
-        "title": "UnsupportedOperationException"
+        "title": "Timer运行多个TimeTask时，只要其中之一没有捕获抛出的异常，其它任务便会自动终止运行。",
+        "result": true
+      },
+      {
+        "title": "ScheduledExecutorService并发运行多个定时任务时，其中某线程抛出异常，不会影响到其它线程的继续运行。",
+        "result": true
+      }
+    ]
+  },
+  {
+    "id": 64,
+    "title": "关于Java代码的设计和开发注意事项，下列哪些说法符合《集合开发规约》",
+    "multi": true,
+    "choose": [
+      {
+        "title": "禁止将URL、文件名、系统参数、数据库连接地址、业务规则的可变参数，硬编码在工程中。",
+        "result": true
+      },
+      {
+        "title": "long或者Long初始赋值时，必须是大写的L，不能小写。",
+        "result": true
+      },
+      {
+        "title": "当一个类有多个构造方法，或是多个同名方法，这些方法应该按顺序放置在一起，便于阅读。",
+        "result": true
+      },
+      {
+        "title": "相同参数类型，同等业务含义，才可以使用Java的可变参数，参数的类型尽量避免使用Object。",
+        "result": true
+      }
+    ]
+  },
+  {
+    "id": 65,
+    "title": "关于数据库索引的命名，下列哪些说法符合《阿里巴巴Java开发手册》",
+    "multi": true,
+    "choose": [
+      {
+        "title": "主键索引(primary key)，字段类型为unsigned bigint、单表时推荐自增、步长为1。",
+        "result": true
+      },
+      {
+        "title": "主键索引(primary key)，字段类型为unsigned bigint、单表时推荐自增、步长为2。",
+        "result": false
+      },
+      {
+        "title": "唯一索引（unique key），命名规则为uk_字段名（如果多个字段继续下划线）。",
+        "result": true
+      },
+      {
+        "title": "普通索引(normal index)，标记成idx_字段名（如果多个继续下划线）。",
+        "result": true
       }
     ]
   }
