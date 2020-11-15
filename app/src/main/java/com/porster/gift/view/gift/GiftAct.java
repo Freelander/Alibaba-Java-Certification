@@ -31,7 +31,7 @@ import java.util.Locale;
 
 public class GiftAct extends StudyAct implements View.OnClickListener{
     /**认证题目数量*/
-    public static final int TOTAL_COUNT=40;
+    public static final int TOTAL_COUNT=50;
 
     /**答题时间*/
     int mCurrentTime;
