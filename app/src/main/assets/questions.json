@@ -1494,5 +1494,810 @@
         "result": true
       }
     ]
+  },
+  {
+    "id": 66,
+    "title": "以下关于命名规约内容说明，正确的是",
+    "multi": true,
+    "choose": [
+      {
+        "title": "【强制】包名统一使用小写，点分隔符之间有且仅有一个自然语义的英语单词，并且使用复数形式，例如：应用工具类包名为 com.alibaba.mpp.utils。",
+        "result": false
+      },
+      {
+        "title": "【强制】类名使用 UpperCamelCase，必须遵从驼峰形式，但以下情形例外：（领域模型的相关命名）DO/DTO/VO/DAO 等",
+        "result": true
+      },
+      {
+        "title": "【强制】抽象类命名使用 Abstract 或 Base 开头；异常类命名使用 Exception 结尾；测试类命名以它要测试的类的名称开始，以 Test 结尾。",
+        "result": true
+      },
+      {
+        "title": "【强制】枚举类名建议带上 Enum 后缀，枚举成员名称需要全大写，单词间用下划线隔开",
+        "result": false
+      }
+    ]
+  },
+  {
+    "id": 67,
+    "title": "关于客户数据展示，下列哪些说法符合《阿里巴巴 Java 开发手册》",
+    "multi": true,
+    "choose": [
+      {
+        "title": "客户的密码，密钥及密保问题答案等信息禁止展示",
+        "result": true
+      },
+      {
+        "title": "客户的银行卡号只显示后四位",
+        "result": true
+      },
+      {
+        "title": "客户的证件号码只显示第一位和最后一位，在必要业务场景下，经多因子强验证后可完整显示。",
+        "result": true
+      },
+      {
+        "title": "涉及有完整展示客户信息的页面均需要接入防爬系统",
+        "result": true
+      }
+    ]
+  },
+  {
+    "id": 68,
+    "title": "关于系统安全，下列哪些说法符合《阿里巴巴 Java 开发手册》",
+    "multi": true,
+    "choose": [
+      {
+        "title": "非 SEO URL 必须配置为禁止爬虫访问。",
+        "result": false
+      },
+      {
+        "title": "用户生成内容的场景，如发帖评论等，必须实现防刷。",
+        "result": true
+      },
+      {
+        "title": "使用平台资源，比如短信、邮件等功能，避免被滥刷资损，同时防止对用户造成骚扰。",
+        "result": true
+      },
+      {
+        "title": "文本内容必须进行违禁词过滤。",
+        "result": true
+      }
+    ]
+  },
+  {
+    "id": 69,
+    "title": "关于 hashcode 和 equals，下列哪些说法是正确的",
+    "multi": true,
+    "choose": [
+      {
+        "title": "hashcode 是 Class 的方法，equals 是 Object 的方法。",
+        "result": false
+      },
+      {
+        "title": "hashcode 决定（如：HashMap）存储位置；equals 决定是否需要覆盖（同一 hash 下）集合元素。",
+        "result": true
+      },
+      {
+        "title": "类重写 hashcode，必须重写 equals。",
+        "result": true
+      },
+      {
+        "title": "两者是否需要重写，没有必然联系。",
+        "result": false
+      }
+    ]
+  },
+  {
+    "id": 70,
+    "title": "关于构造方法，下列哪些说法符合《阿里巴巴 Java 开发手册》",
+    "multi": true,
+    "choose": [
+      {
+        "title": "构造方法里面禁止加入任何业务逻辑，如果有初始化逻辑，请放在 init 方法中。",
+        "result": true
+      },
+      {
+        "title": "当一个类有多个构造方法，应该按顺序放置在一起，便于阅读。",
+        "result": true
+      },
+      {
+        "title": "如果不允许外部直接通过 new 来创建对象，那么构造方法必须是 private。",
+        "result": true
+      },
+      {
+        "title": "构造方法中可以有业务实现代码，如对成员变量的简单运算、业务判断等。",
+        "result": false
+      }
+    ]
+  },
+  {
+    "id": 71,
+    "title": "针对 tcp 协议，下列哪些说法是正确的",
+    "multi": true,
+    "choose": [
+      {
+        "title": "tcp 链接主动关闭的一方，在完成四次挥手协议后，即会立即关闭并释放 socket。",
+        "result": false
+      },
+      {
+        "title": "处于 time_wait 状态的 socket，其实是已经关闭状态，当需要新建连接时，可以被马上复用。",
+        "result": false
+      },
+      {
+        "title": "当大量 socket 处于 time_wait 状态时，会导致可用 socket 资源稀缺，从而导致服务器并发能力下降。",
+        "result": true
+      },
+      {
+        "title": "通过修改/etc/sysctl.conf配置文件，减少 time_wait 的超时时间，可以降低 time_wait 状态的 socket 数量，从而提升服务器并发能力。",
+        "result": true
+      }
+    ]
+  },
+  {
+    "id": 72,
+    "title": "关于应用与数据库之间的操作，下列哪些说法符合《阿里巴巴 Java 开发手册》",
+    "multi": true,
+    "choose": [
+      {
+        "title": "对外提供一个大而全的接口进行 POJO 的 update 更新，这样比较省事、省代码。",
+        "result": false
+      },
+      {
+        "title": "使用事务回滚的地方需要考虑各方面的回滚方案，包括缓存回滚、搜索引擎回滚、消息补偿、统计修正等。",
+        "result": true
+      },
+      {
+        "title": "应用服务器与数据库之间是短连接。",
+        "result": true
+      },
+      {
+        "title": "应用服务器与数据库之间是长连接。",
+        "result": false
+      }
+    ]
+  },
+  {
+    "id": 73,
+    "title": "关于异常处理，下列哪些说法是正确的",
+    "multi": true,
+    "choose": [
+      {
+        "title": "try 块放到了事务代码中，catch 异常后，如果需要回滚事务，必须要手动回滚事务。",
+        "result": true
+      },
+      {
+        "title": "在 finally 块必须对文件流进行关闭。",
+        "result": true
+      },
+      {
+        "title": "不能再 finally 块使用 return，finally 块中的 return 返回后方法结束执行，不会再执行 try 块中的 return 语句。",
+        "result": true
+      },
+      {
+        "title": "循环体中避免不需要的 try-catch 操作。",
+        "result": true
+      }
+    ]
+  },
+  {
+    "id": 74,
+    "title": "关于应用中可以直接依赖的日志框架，下列哪些说法符合《阿里巴巴 Java 开发手册》",
+    "multi": true,
+    "choose": [
+      {
+        "title": "Log4j",
+        "result": false
+      },
+      {
+        "title": "SLF4J",
+        "result": true
+      },
+      {
+        "title": "JCL(Jakarta Commons Logging)。",
+        "result": true
+      },
+      {
+        "title": "Logback。",
+        "result": false
+      }
+    ]
+  },
+  {
+    "id": 75,
+    "title": "关于类和方法的命名，下列哪些说法符合《阿里巴巴 Java 开发手册》",
+    "multi": true,
+    "choose": [
+      {
+        "title": "类名使用 UpperCamelCase 命名法，但是领域模型命名除外，如：ProductDO 的命名是规范的。",
+        "result": true
+      },
+      {
+        "title": "方法名命名应用使用 lowerCamelCase 命名法，如方法名：getHttpMessage() 是符合命名规范的。",
+        "result": true
+      },
+      {
+        "title": "为了方便理解，方法名或参数名可以使用拼音与英文混合的方式。",
+        "result": false
+      },
+      {
+        "title": "所有编程相关的命名均不能以下划线或美元符号开始，也不能以下划线或美元符合结束。",
+        "result": true
+      }
+    ]
+  },
+  {
+    "id": 76,
+    "title": "关于二方库的依赖处理，下列哪些说法符合《阿里巴巴 Java 开发手册》",
+    "multi": true,
+    "choose": [
+      {
+        "title": "依赖于一个二方库群时，必须定义一个统一版本变量，避免各子二方库版本号不一致。",
+        "result": true
+      },
+      {
+        "title": "可以允许子项目的 pom 依赖中出现相同的 GroupId，相同的 ArtifactId，但是不同的 Version。",
+        "result": false
+      },
+      {
+        "title": "所有 pom 文件中的依赖声明放在 <dependencies> 语句块中，所有版本仲裁放在 <dependencyManagement> 语句块中。",
+        "result": true
+      },
+      {
+        "title": "线上应用不要依赖 SNAPSHOT 版本（安全包除外）",
+        "result": true
+      }
+    ]
+  },
+  {
+    "id": 77,
+    "title": "关于方法的返回值是否可以为null，下列哪些说法符合《阿里巴巴Java开发手册》",
+    "multi": true,
+    "choose": [
+      {
+        "title": "方法的返回值可以为null，如果是集合，必须返回空集合。",
+        "result": false
+      },
+      {
+        "title": "方法的返回值可以为null，不强制返回空集合，或者空对象等。",
+        "result": true
+      },
+      {
+        "title": "方法实现者必须添加注释，充分说明什么情况下会返回null值。",
+        "result": true
+      },
+      {
+        "title": "防止NPE是调用者的责任。",
+        "result": true
+      }
+    ]
+  },
+  {
+    "id": 78,
+    "title": "关于领域模型命名，下列哪些说法符合《阿里巴巴Java开发手册》",
+    "multi": true,
+    "choose": [
+      {
+        "title": "数据对象命名：xxxDO，xxx即为数据表名，例如：ResellerAccountDO。",
+        "result": true
+      },
+      {
+        "title": "数据传输对象：xxxDTO，xxx为业务领域相关的名称，例如ProductDTO。",
+        "result": true
+      },
+      {
+        "title": "展示层对象：xxxVO，xxx一般为网页名称，例如RecommendProductVO。",
+        "result": true
+      },
+      {
+        "title": "POJO是DO/DTO/BO/VO的统称，命名成xxxPOJO。",
+        "result": true
+      }
+    ]
+  },
+  {
+    "id": 79,
+    "title": "关于建表规约，下列哪些说法符合《阿里巴巴Java开发手册》",
+    "multi": true,
+    "choose": [
+      {
+        "title": "字段为非负数，必须定义为unsigned。",
+        "result": true
+      },
+      {
+        "title": "存储的字符数几乎完全相等的字段，推荐定义为char类型存储。",
+        "result": true
+      },
+      {
+        "title": "varchar会预先分配存储空间。",
+        "result": false
+      },
+      {
+        "title": "不得使用级联与外键，一切外键概念必须在应用层解决。",
+        "result": true
+      }
+    ]
+  },
+  {
+    "id": 80,
+    "title": "使用CountDownLatch进行异步转同步操作时，下列哪些说法是正确的",
+    "multi": true,
+    "choose": [
+      {
+        "title": "每个线程退出前必须调用countDown()方法。",
+        "result": true
+      },
+      {
+        "title": "线程执行代码注意catch异常，确保countDowm()方法可以被执行。",
+        "result": true
+      },
+      {
+        "title": "子线程抛出异常堆钱，直接就可以在主线程catch到。",
+        "result": false
+      },
+      {
+        "title": "主线程必须在启动其他线程后调用await()方法，这样主线程的操作就会在这个方法上阻塞，直到其他线程完成各自的任务。",
+        "result": true
+      }
+    ]
+  },
+  {
+    "id": 81,
+    "title": "关于二方库GroupID和ArtifactID格式，下列哪些说法符合《阿里巴巴Java开发手册》",
+    "multi": true,
+    "choose": [
+      {
+        "title": "GroupID格式为：com.{公司/子公司}.业务线[.子业务]。",
+        "result": true
+      },
+      {
+        "title": "GroupID格式为：com.{公司/子公司}.业务线.子业务线.子模块。",
+        "result": false
+      },
+      {
+        "title": "ArtifactlD格式为：产品线名_模块名或者产品线.模块名。",
+        "result": false
+      },
+      {
+        "title": "ArtifactID格式为：产品线名-模块名。",
+        "result": true
+      }
+    ]
+  },
+  {
+    "id": 82,
+    "title": "关于try-catch的使用方式，下列哪些说法是正确的",
+    "multi": true,
+    "choose": [
+      {
+        "title": "推荐用try-catch来做流程控制、条件控制。",
+        "result": false
+      },
+      {
+        "title": "捕获异常与抛异常，必须是完全匹配，或者捕获异常是抛异常的父类。",
+        "result": true
+      },
+      {
+        "title": "对大段代码进行try-catch，利用Throwable来捕捉，万无一失。",
+        "result": false
+      },
+      {
+        "title": "对大段代码进行try-catch，这是不负责任的表现，分清稳定代码和非稳定代码，对非稳定的代码做对应的异常处理。",
+        "result": true
+      }
+    ]
+  },
+  {
+    "id": 83,
+    "title": "关于join的描述，下列哪些说法符合《阿里巴巴Java开发手册》",
+    "multi": true,
+    "choose": [
+      {
+        "title": "join的字段，数据类型须保持绝对一致。",
+        "result": true
+      },
+      {
+        "title": "join列必须有索引。",
+        "result": true
+      },
+      {
+        "title": "优先where过滤，其次再join关联。",
+        "result": true
+      },
+      {
+        "title": "只要满足业务需求和，join表的个数不受限制。",
+        "result": false
+      }
+    ]
+  },
+  {
+    "id": 84,
+    "title": "关于数据库查询的描述，下列哪些说法符合《阿里巴巴Java开发手册》",
+    "multi": true,
+    "choose": [
+      {
+        "title": "当需要获取数据表所有字段的值映射到DO时，可使用select *来查询。",
+        "result": false
+      },
+      {
+        "title": "绝对禁止左模糊和全模糊查询；限制使用右模糊查询。全模糊或左模糊搜索的需求走搜索引擎实现。",
+        "result": true
+      },
+      {
+        "title": "禁止使用存储过程来查询返回数据。",
+        "result": true
+      },
+      {
+        "title": "在表查询中，需order by排序时，优先使用主键列，索引列。",
+        "result": true
+      }
+    ]
+  },
+  {
+    "id": 85,
+    "title": "关于ORM的规则，下列哪些说法符合《阿里巴巴Java开发手册》",
+    "multi": true,
+    "choose": [
+      {
+        "title": "数据库中，表达是与否概念的字段，必须使用is_xxx的方式命名。",
+        "result": true
+      },
+      {
+        "title": "推荐使用iBATIS自带的queryForList(String statementName, int start, int size)进行分页查询。",
+        "result": false
+      },
+      {
+        "title": "为避免写resultMap，可以直接拿HashMap与HashTable作为查询结果集的输出。",
+        "result": false
+      },
+      {
+        "title": "不要用resultClass当返回参数，即使所有类属性名与数据库字段一一对应，也需要定义。",
+        "result": true
+      }
+    ]
+  },
+  {
+    "id": 86,
+    "title": "关于基本数据类型与包装数据类型的使用标准，下列哪些说法符合《阿里巴巴Java开发手册》",
+    "multi": true,
+    "choose": [
+      {
+        "title": "所有的POJO类属性必须使用包装数据类型。",
+        "result": true
+      },
+      {
+        "title": "RPC方法的返回值和参数必须使用包装数据类型。",
+        "result": true
+      },
+      {
+        "title": "因为JAVA的自动装箱与拆箱机制，不需要根据场景来区分数据类型。",
+        "result": false
+      },
+      {
+        "title": "所有的局部变量推荐使用基本数据类型。",
+        "result": true
+      }
+    ]
+  },
+  {
+    "id": 87,
+    "title": "在《阿里巴巴Java开发手册》中，提到不要对单元测试存在哪些误解？",
+    "multi": true,
+    "choose": [
+      {
+        "title": "那是测试同学干的事情。",
+        "result": true
+      },
+      {
+        "title": "单元测试代码是多余的。",
+        "result": true
+      },
+      {
+        "title": "单元测试代码不需要维护。",
+        "result": true
+      },
+      {
+        "title": "单元测试与线上故障没有辩证关系。",
+        "result": true
+      }
+    ]
+  },
+  {
+    "id": 88,
+    "title": "关于使用iBATIS操作数据，下列哪些说法符合《阿里巴巴Java开发手册》",
+    "multi": true,
+    "choose": [
+      {
+        "title": "如果表中字段和DO中的字段名完全一致，可直接用DO作为resultClass。",
+        "result": false
+      },
+      {
+        "title": "iBATIS中自带了queryForList(String statementName, int start, int size)的分页接口，可直接使用，无需再自行封装。",
+        "result": false
+      },
+      {
+        "title": "不要定义大而全的数据更新接口，对整个DO进行更新。必须按需更新。",
+        "result": true
+      },
+      {
+        "title": "sqlmap中写update语句时，必须包含对记录中gmt_modified字段的更新。",
+        "result": true
+      }
+    ]
+  },
+  {
+    "id": 89,
+    "title": "关于注释，下列哪些说法符合《阿里巴巴Java开发手册》",
+    "multi": true,
+    "choose": [
+      {
+        "title": "方法头定义签名上的注释可以使用//（双划线）简单说明，不必要遵守javadoc规范。",
+        "result": false
+      },
+      {
+        "title": "类定义开始部分，一般都用javadoc注释程序的总体描述以及作者信息。",
+        "result": true
+      },
+      {
+        "title": "方法头定义签名上的注释必须遵守javadoc规范，使用/**回车来生成，不得在方法定义上方使用//（双划线）简单说明。",
+        "result": true
+      },
+      {
+        "title": "方法头定义签名上的注释，可以使用// XXX的形式",
+        "result": false
+      }
+    ]
+  },
+  {
+    "id": 90,
+    "title": "关于注释，下列哪些说法符合《阿里巴巴Java开发手册》",
+    "multi": true,
+    "choose": [
+      {
+        "title": "方法内部单行注释，在被注释语句上方另起一行，使用//注释。",
+        "result": true
+      },
+      {
+        "title": "所有的类都必须添加创建者信息。",
+        "result": true
+      },
+      {
+        "title": "相比较使用“半吊子”英文来注释，用中文注释把问题说清楚更合适。",
+        "result": true
+      },
+      {
+        "title": "所有的枚举类型字段必须要有注释，说明每个数据项的用途。",
+        "result": true
+      }
+    ]
+  },
+  {
+    "id": 91,
+    "title": "关于二方库使用枚举类型，下列哪些说法符合《阿里巴巴Java开发手册》",
+    "multi": true,
+    "choose": [
+      {
+        "title": "二方库里可以定义枚举类型。",
+        "result": true
+      },
+      {
+        "title": "二方库里接口的入参可以使用枚举类型。",
+        "result": true
+      },
+      {
+        "title": "二方库里接口的返回值不能使用枚举类型，但可以包含枚举类型。",
+        "result": false
+      },
+      {
+        "title": "二方库里接口的返回值是枚举类型或包含枚举类型时，当二方库的枚举值升级（增加枚举值）时，可能会导致接口调用时出现枚举对象序列化异常。",
+        "result": true
+      }
+    ]
+  },
+  {
+    "id": 92,
+    "title": "关于日志的打印，下列哪些写法符合《阿里巴巴Java开发手册》",
+    "multi": false,
+    "choose": [
+      {
+        "title": "System.out(\"xxx\"+e.getMessage())。",
+        "result": false
+      },
+      {
+        "title": "System.err(\"xxx\"+e.getMessage())。",
+        "result": false
+      },
+      {
+        "title": "e.printStackTrace()。",
+        "result": false
+      },
+      {
+        "title": "logger.error(\"exception happens product info:\" + product.toString() + \"_\" + e.getMessage() e)。",
+        "result": true
+      }
+    ]
+  },
+  {
+    "id": 93,
+    "title": "单元测试代码写在Java工程的哪个地方最为合适？",
+    "multi": false,
+    "choose": [
+      {
+        "title": "写在业务代码体里边，方便调试。",
+        "result": false
+      },
+      {
+        "title": "写在业务代码同一个包下，方便归类查找。",
+        "result": false
+      },
+      {
+        "title": "写在src/test/java目录下。",
+        "result": true
+      },
+      {
+        "title": "写在src/java目录下。",
+        "result": false
+      }
+    ]
+  },
+  {
+    "id": 94,
+    "title": "关于系统安全，下列哪些说法符合《阿里巴巴Java开发手册》",
+    "multi": true,
+    "choose": [
+      {
+        "title": "表单、AJAX提交不需要进行CSRF安全过滤。",
+        "result": false
+      },
+      {
+        "title": "表单、AJAX提交必须执行CSRF安全过滤。",
+        "result": true
+      },
+      {
+        "title": "URL外部重定向传入的目标地址必须执行白名单过滤。",
+        "result": true
+      },
+      {
+        "title": "用户输入的SQL参数严格使用参数绑定或者METADATA字段值限定，防止SQL注入，禁止字符串拼接SQL访问数据库。",
+        "result": true
+      }
+    ]
+  },
+  {
+    "id": 95,
+    "title": "关于组合索引，下列哪些说法符合《阿里巴巴Java开发手册》",
+    "multi": true,
+    "choose": [
+      {
+        "title": "查询条件where a='0' and b='1'，当组合索引为(b, a)的时候能进行索引扫描。",
+        "result": true
+      },
+      {
+        "title": "查询条件where a='0' and b='1'，当组合索引为(c, a, b)的时候能进行索引扫描。",
+        "result": false
+      },
+      {
+        "title": "查询select b from table where a='0'，当组合索引为(a, b)的时候会进行索引扫描。",
+        "result": true
+      },
+      {
+        "title": "查询条件where a>0 order by b，当组合索引为(a, b)时会利用索引进行排序。",
+        "result": false
+      }
+    ]
+  },
+  {
+    "id": 96,
+    "title": "关于Java代码的设计和开发注意事项，下列哪些说法符合《阿里巴巴Java开发手册》",
+    "multi": true,
+    "choose": [
+      {
+        "title": "所有的覆写方法，必须是强制加@Override。",
+        "result": true
+      },
+      {
+        "title": "setter方法中，参数名称与类成员变量名称一致，this.成员名 = 参数名。",
+        "result": true
+      },
+      {
+        "title": "在getter方法中，尽量不要增加逻辑判断，因为添加了逻辑判断后，会增加排查问题难度。",
+        "result": true
+      },
+      {
+        "title": "避免用BeanUtil进行属性的copy。",
+        "result": true
+      }
+    ]
+  },
+  {
+    "id": 97,
+    "title": "关于常量定义，下列哪些说法符合《阿里巴巴Java开发手册》",
+    "multi": true,
+    "choose": [
+      {
+        "title": "跨应用共享常量：放置在二方库中，通常是client.jar中的const目录下。",
+        "result": true
+      },
+      {
+        "title": "应用内共享常量：通常放置在一方库的modules中的const目录下。",
+        "result": true
+      },
+      {
+        "title": "子工程内部共享常量：即在当前子工程的const目录下。",
+        "result": true
+      },
+      {
+        "title": "类内常量：直接在类内部private static final定义。",
+        "result": true
+      }
+    ]
+  },
+  {
+    "id": 98,
+    "title": "下面的例子代码和描述，哪些是有不正确的",
+    "multi": true,
+    "choose": [
+      {
+        "title": "单行字符数限制不超过140个，超出需要换行",
+        "result": true
+      },
+      {
+        "title": "IDE的text file encoding设置为GBK；IDE中文件的换行符使用Unix格式，不要使用windows格式。",
+        "result": false
+      },
+      {
+        "title": "大括号与if，else，for，do，while语句一起使用，即使只有一条语句（或是空），也应该把大括号写上。",
+        "result": true
+      },
+      {
+        "title": "大括号的使用约定。如果是大括号内为空，则简洁地写成即可，不需要换行。",
+        "result": true
+      }
+    ]
+  },
+  {
+    "id": 99,
+    "title": "好的单元测试必须遵守AlR原则，那么AlR原则具体是指",
+    "multi": true,
+    "choose": [
+      {
+        "title": "单元测试应该是全自动执行的，并且非交互式的。",
+        "result": true
+      },
+      {
+        "title": "单元测试必须在线上环境能够全部被正确地编译。",
+        "result": false
+      },
+      {
+        "title": "为了保证单元测试稳定可靠且便于维护，单元测试用例之间决不能互相调用，也不能依赖执行的先后次序。",
+        "result": true
+      },
+      {
+        "title": "单元测试是可以重复执行的。",
+        "result": true
+      }
+    ]
+  },
+  {
+    "id": 100,
+    "title": "编写单元测试代码遵守BCDE原则，以保证被测试模块的交付质量，那么下列说法正确的是",
+    "multi": true,
+    "choose": [
+      {
+        "title": "Border，边界值测试，包括循环边界、特殊取值、特殊时间点、数据顺序等。",
+        "result": true
+      },
+      {
+        "title": "Correct，正确的输入，并得到预期的结果。",
+        "result": true
+      },
+      {
+        "title": "Design，与设计文档相结合，来编写单元测试。",
+        "result": true
+      },
+      {
+        "title": "Equal，单元测试环境必须与线上生产环境一致。「ERROR」。",
+        "result": false
+      }
+    ]
   }
 ]
