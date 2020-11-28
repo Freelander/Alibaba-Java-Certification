@@ -1,7 +1,7 @@
 package com.gojun.certification.widget.recycler;
 
 import android.graphics.Rect;
-import android.support.v7.widget.RecyclerView;
+import androidx.recyclerview.widget.RecyclerView;
 import android.view.View;
 
 /**

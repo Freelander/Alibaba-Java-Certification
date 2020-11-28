@@ -20,7 +20,7 @@
         android:scaleType="fitXY"
         android:layout_gravity="center_horizontal"
         android:layout_height="wrap_content"/>
-    <android.support.v7.widget.RecyclerView
+    <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/q_select"
         tools:itemcount="2"
         tools:listitem="@layout/fragment_question_item"

@@ -1,7 +1,7 @@
 package com.gojun.certification.view.setting;
 
 import android.os.Bundle;
-import android.support.annotation.Nullable;
+import androidx.annotation.Nullable;
 
 import com.gojun.certification.R;
 import com.gojun.certification.core.BaseActivity;

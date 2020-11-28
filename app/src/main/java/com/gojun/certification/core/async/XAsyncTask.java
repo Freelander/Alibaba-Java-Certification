@@ -2,9 +2,10 @@ package com.gojun.certification.core.async;
 
 import android.content.Context;
 import android.os.AsyncTask;
-import android.support.v4.app.FragmentActivity;
-import android.support.v4.os.AsyncTaskCompat;
+import androidx.fragment.app.FragmentActivity;
 
+
+import com.gojun.certification.utils.AsyncTaskCompat;
 
 import java.lang.ref.WeakReference;
 
