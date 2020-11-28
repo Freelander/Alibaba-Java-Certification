@@ -8,7 +8,7 @@
     <include layout="@layout/layout_title"/>
     <include layout="@layout/layout_list_empty_view"
         android:visibility="gone"/>
-    <com.porster.gift.widget.md.MaterialLinearLayout
+    <com.gojun.certification.widget.md.MaterialLinearLayout
         android:id="@+id/f_start"
         style="@style/padding"
         android:layout_width="match_parent"
@@ -34,11 +34,11 @@
             android:drawableRight="@drawable/right"
             android:gravity="center"
             android:textSize="16sp"/>
-    </com.porster.gift.widget.md.MaterialLinearLayout>
+    </com.gojun.certification.widget.md.MaterialLinearLayout>
 
     <View style="@style/divider_horizontal"/>
 
-    <com.porster.gift.widget.md.MaterialTextView
+    <com.gojun.certification.widget.md.MaterialTextView
         android:id="@+id/fail_delete"
         style="@style/padding"
         android:layout_width="match_parent"

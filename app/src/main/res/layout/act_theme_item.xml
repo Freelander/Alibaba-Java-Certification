@@ -3,7 +3,7 @@
               android:orientation="vertical"
               android:layout_width="match_parent"
               android:layout_height="wrap_content">
-    <com.porster.gift.widget.CircleView
+    <com.gojun.certification.widget.CircleView
         android:id="@+id/circle"
         android:layout_width="42dp"
         android:layout_marginTop="5dp"

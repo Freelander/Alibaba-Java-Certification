@@ -7,7 +7,7 @@
 
     <include layout="@layout/layout_title"/>
 
-    <com.porster.gift.widget.md.MaterialTextView
+    <com.gojun.certification.widget.md.MaterialTextView
         android:id="@+id/set_about"
         android:layout_marginTop="10dp"
         style="@style/padding"
@@ -26,7 +26,7 @@
         android:layout_marginTop="10dp"
         android:orientation="horizontal">
 
-        <com.porster.gift.widget.md.MaterialTextView
+        <com.gojun.certification.widget.md.MaterialTextView
             android:id="@+id/set_theme"
             style="@style/padding"
             android:layout_width="match_parent"
@@ -36,7 +36,7 @@
             android:text="自定义主题色"
             android:textSize="16sp"/>
 
-        <com.porster.gift.widget.LightingView
+        <com.gojun.certification.widget.LightingView
             android:id="@+id/set_lighting"
             android:layout_width="15dp"
             android:layout_height="15dp"
@@ -46,7 +46,7 @@
 
     <View style="@style/divider_horizontal"/>
 
-    <com.porster.gift.widget.md.MaterialTextView
+    <com.gojun.certification.widget.md.MaterialTextView
         android:id="@+id/set_high_setting"
         style="@style/padding"
         android:layout_width="match_parent"
@@ -56,7 +56,7 @@
         android:text="高级设置"
         android:textSize="16sp"/>
     <View style="@style/divider_horizontal"/>
-    <com.porster.gift.widget.md.MaterialTextView
+    <com.gojun.certification.widget.md.MaterialTextView
         android:id="@+id/set_feedback"
         style="@style/padding"
         android:layout_width="match_parent"
@@ -72,7 +72,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp">
 
-        <com.porster.gift.widget.md.MaterialTextView
+        <com.gojun.certification.widget.md.MaterialTextView
             android:id="@+id/check_update"
             style="@style/padding"
             android:layout_width="match_parent"

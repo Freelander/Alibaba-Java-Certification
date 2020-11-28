@@ -26,7 +26,7 @@
         tools:listitem="@layout/fragment_question_item"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
-    <com.porster.gift.widget.md.MaterialTextView
+    <com.gojun.certification.widget.md.MaterialTextView
         android:id="@+id/g_multi_submit"
         android:padding="10dp"
         android:layout_margin="15dp"

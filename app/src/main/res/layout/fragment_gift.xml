@@ -12,7 +12,7 @@
         android:layout_marginTop="10dp"
         android:background="@color/white">
 
-        <com.porster.gift.widget.md.MaterialRelativeLayout
+        <com.gojun.certification.widget.md.MaterialRelativeLayout
             android:id="@+id/g_start"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -45,14 +45,14 @@
                 android:layout_marginTop="5dp"
                 android:textColor="@color/hint_txt"
                 android:textSize="14sp"/>
-        </com.porster.gift.widget.md.MaterialRelativeLayout>
+        </com.gojun.certification.widget.md.MaterialRelativeLayout>
 
         <View
             style="@style/divider_vertical"
             android:layout_marginBottom="20dp"
             android:layout_marginTop="20dp"/>
 
-        <com.porster.gift.widget.md.MaterialRelativeLayout
+        <com.gojun.certification.widget.md.MaterialRelativeLayout
             android:id="@+id/g_history"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -84,7 +84,7 @@
                 android:layout_marginTop="5dp"
                 android:textColor="@color/hint_txt"
                 android:textSize="14sp"/>
-        </com.porster.gift.widget.md.MaterialRelativeLayout>
+        </com.gojun.certification.widget.md.MaterialRelativeLayout>
     </LinearLayout>
     <View style="@style/divider_horizontal"/>
 </LinearLayout>

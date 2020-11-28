@@ -4,26 +4,25 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/wel_bg"
-    tools:context="com.porster.gift.StartActivity">
+    android:background="@android:color/white"
+    tools:context="com.gojun.certification.StartActivity">
 
     <ImageView
         android:id="@+id/wel_book"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="84dp"
+        android:layout_height="84dp"
         android:layout_centerInParent="true"
-        android:src="@drawable/wel_book"/>
+        android:src="@drawable/ic_launcher"/>
 
-
-    <ImageView
+    <TextView
         android:id="@+id/wel_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/wel_book"
         android:layout_centerHorizontal="true"
-        android:src="@drawable/wel_name"/>
-    <FrameLayout
-        android:id="@+id/wel_ad"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_marginTop="16dp"
+        android:text="阿里编码规范训练营"
+        android:textSize="16sp"
+        android:textColor="#333333"/>
+
 </RelativeLayout>
