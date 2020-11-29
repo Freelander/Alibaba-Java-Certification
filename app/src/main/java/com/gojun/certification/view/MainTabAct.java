@@ -154,7 +154,6 @@ public class MainTabAct extends BaseActivity implements View.OnClickListener{
         }
         ((ViewGroup)$(tabIds[0]).getParent()).setBackgroundColor(themeColor);
         mStudyFragment.tintTheme();
-        mSettingFragment.tintTheme();
         mFailFragment.tintTheme();
         mGiftFragment.tintTheme();
     }

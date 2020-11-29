@@ -6,6 +6,10 @@
     <string name="x_dialog_btn_cancle">取消</string>
     <string name="study_tips">通过不断练习，来加深印象，取得更好的成绩</string>
     <string name="study_start">开始练习</string>
+    <string name="about_app">关于软件</string>
+    <string name="custom_theme">自定义主题色</string>
+    <string name="high_setting">高级设置</string>
+    <string name="setting">设置</string>
 
 
 </resources>
