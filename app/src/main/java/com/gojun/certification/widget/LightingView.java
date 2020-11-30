@@ -9,11 +9,12 @@ import android.graphics.Paint;
 import android.graphics.Path;
 import android.graphics.PorterDuff;
 import android.graphics.PorterDuffXfermode;
-import androidx.annotation.Nullable;
-import androidx.core.content.ContextCompat;
 import android.util.AttributeSet;
 import android.view.View;
 import android.view.animation.AccelerateInterpolator;
+
+import androidx.annotation.Nullable;
+import androidx.core.content.ContextCompat;
 
 import com.gojun.certification.R;
 
@@ -21,7 +22,7 @@ import com.gojun.certification.R;
  * Created by Porster on 17/5/3.
  */
 
-public class LightingView extends View{
+public class LightingView extends View {
     private PorterDuffXfermode xfermode = new PorterDuffXfermode(PorterDuff.Mode.SRC_ATOP);
 
     int mWidth;
@@ -37,12 +38,13 @@ public class LightingView extends View{
         super(context, attrs);
         init();
     }
-    private void init(){
-        mPaint=new Paint(Paint.ANTI_ALIAS_FLAG);
+
+    private void init() {
+        mPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
         mPaint.setStyle(Paint.Style.FILL);
 
-        mLightPath=new Path();
-        color=ContextCompat.getColor(getContext(), R.color.theme_color);
+        mLightPath = new Path();
+        color = ContextCompat.getColor(getContext(), R.color.theme_color);
     }
 
     public void setColor(int color) {
@@ -53,19 +55,19 @@ public class LightingView extends View{
     @Override
     protected void onSizeChanged(int w, int h, int oldw, int oldh) {
         super.onSizeChanged(w, h, oldw, oldh);
-        mWidth=w;
-        mHeight=h;
-        mLightWidth=w/3;
+        mWidth = w;
+        mHeight = h;
+        mLightWidth = w / 3;
 
-        mPath=new Path();
+        mPath = new Path();
         //画出一个菱形
-        mPath.moveTo(0,mHeight/2);
+        mPath.moveTo(0, mHeight / 2);
 
-        mPath.lineTo(mWidth/2,0);
+        mPath.lineTo(mWidth / 2, 0);
 
-        mPath.lineTo(mWidth,mHeight/2);
+        mPath.lineTo(mWidth, mHeight / 2);
 
-        mPath.lineTo(mWidth/2,mHeight);
+        mPath.lineTo(mWidth / 2, mHeight);
 
         mPath.close();
 
@@ -78,11 +80,11 @@ public class LightingView extends View{
         int sc = canvas.saveLayer(0, 0, mWidth, mHeight, null, Canvas.ALL_SAVE_FLAG);
 
         mPaint.setColor(color);
-        canvas.drawPath(mPath,mPaint);
+        canvas.drawPath(mPath, mPaint);
 
         mPaint.setXfermode(xfermode);
         mPaint.setColor(ContextCompat.getColor(getContext(), R.color.white_light));
-        canvas.drawPath(mLightPath,mPaint);
+        canvas.drawPath(mLightPath, mPaint);
         mPaint.setXfermode(null);
 
         canvas.restoreToCount(sc);
@@ -93,8 +95,8 @@ public class LightingView extends View{
     int moveX;
     ObjectAnimator startAnim;
 
-    public void startLighting(){
-        startAnim=ObjectAnimator.ofInt(this,"moveX",0,mWidth+mLightWidth);
+    public void startLighting() {
+        startAnim = ObjectAnimator.ofInt(this, "moveX", 0, mWidth + mLightWidth);
         startAnim.setDuration(500);
         startAnim.setInterpolator(new AccelerateInterpolator());
         startAnim.addListener(new AnimatorListenerAdapter() {
@@ -107,20 +109,22 @@ public class LightingView extends View{
         });
         startAnim.start();
     }
-    public void stopLighting(){
+
+    public void stopLighting() {
         startAnim.cancel();
     }
-    public void setMoveX(int x){
-        moveX=x;
+
+    public void setMoveX(int x) {
+        moveX = x;
         mLightPath.reset();
 
-        mLightPath.moveTo(mWidth/2+moveX,0);//Top-Right
+        mLightPath.moveTo(mWidth / 2 + moveX, 0);//Top-Right
 
-        mLightPath.lineTo(-mWidth/2+moveX,mHeight);//Bottom-Right
+        mLightPath.lineTo(-mWidth / 2 + moveX, mHeight);//Bottom-Right
 
-        mLightPath.lineTo(-mWidth/2-mLightWidth+moveX,mHeight);//Bottom-Left
+        mLightPath.lineTo(-mWidth / 2 - mLightWidth + moveX, mHeight);//Bottom-Left
 
-        mLightPath.lineTo(mWidth/2-mLightWidth+moveX,0);//Top-Left
+        mLightPath.lineTo(mWidth / 2 - mLightWidth + moveX, 0);//Top-Left
 
         mLightPath.close();
 

@@ -5,7 +5,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import androidx.annotation.Nullable;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.gojun.certification.R;
@@ -21,22 +20,13 @@ public class SettingFragment extends BaseFragment {
 
     @Override
     public View onCreateView(@NotNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        mBinding = FragmentSettingBinding.inflate(inflater);
         mViewModel = new ViewModelProvider(this).get(SettingViewModel.class);
+        mViewModel.init(requireActivity(), R.string.setting);
+
+        mBinding = FragmentSettingBinding.inflate(inflater);
         mBinding.setViewModel(mViewModel);
         mBinding.setFragment(this);
-        mainView = mBinding.getRoot();
-        return mainView;
-    }
 
-    @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-        mBinding.llTitle.titleBarTitle.setText(getString(R.string.setting));
-        mBinding.lightingView.startLighting();
-
-        int themeColor = mViewModel.getThemeColor(requireContext());
-        mBinding.lightingView.setColor(themeColor);
-        mBinding.llTitle.titleBarLayout.setBackgroundColor(themeColor);
+        return mBinding.getRoot();
     }
 }

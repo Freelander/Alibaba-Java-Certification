@@ -1,10 +1,12 @@
 package com.gojun.certification.frame;
 
+import android.app.Activity;
 import android.app.Application;
-import android.content.Context;
+import android.text.TextUtils;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.StringRes;
 import androidx.lifecycle.AndroidViewModel;
 
 import com.gojun.certification.core.SessionData;
@@ -17,18 +19,20 @@ import com.gojun.certification.core.ThemeCore;
  */
 public abstract class BaseAndroidViewModel extends AndroidViewModel {
 
-    private String tag;
+    private String mTag;
+    private String mTitle;
+    private int mThemeColor;
 
     public BaseAndroidViewModel(@NonNull Application application) {
         super(application);
     }
 
     public String getTag() {
-        if (tag == null) {
-            tag = this.getClass().getSimpleName() + "_" + this.hashCode();
+        if (mTag == null) {
+            mTag = this.getClass().getSimpleName() + "_" + this.hashCode();
         }
 
-        return tag;
+        return mTag;
     }
 
     @Override
@@ -36,8 +40,20 @@ public abstract class BaseAndroidViewModel extends AndroidViewModel {
         super.onCleared();
     }
 
-    public int getThemeColor(Context context) {
-        return (int) SessionData.getObject(context, ThemeCore.THEME_COLOR, ThemeCore.THEME_DEF_COLOR);
+    public final void init(Activity activity, @StringRes int titleResId) {
+        mThemeColor = (int) SessionData.getObject(activity, ThemeCore.THEME_COLOR, ThemeCore.THEME_DEF_COLOR);
+        mTitle = activity.getString(titleResId);
+    }
+
+    public int getThemeColor() {
+        return mThemeColor;
+    }
+
+    public String getTitle() {
+        if (TextUtils.isEmpty(mTitle)) {
+            return "";
+        }
+        return mTitle;
     }
 
     public void showLongToast(String msg) {

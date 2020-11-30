@@ -1,11 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout>
+    <data>
+        <variable
+            name="viewModel"
+            type="com.gojun.certification.frame.BaseAndroidViewModel" />
+    </data>
     <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
         android:id="@+id/title_bar_layout"
         android:layout_width="match_parent"
         android:layout_height="45dp"
-        android:background="@color/theme_color"
-        android:orientation="vertical" >
+        android:background="@{viewModel.themeColor}"
+        android:orientation="vertical"
+        tools:background="@color/theme_color">
 
         <LinearLayout
             android:id="@+id/title_bar_left_layout"
@@ -74,7 +81,8 @@
             android:maxLength="12"
             android:singleLine="true"
             android:textColor="@color/white"
-            android:textSize="20sp" />
+            android:textSize="20sp"
+            android:text="@{viewModel.title}"/>
         <View
             android:id="@+id/title_bar_bottom_line"
             style="@style/divider_horizontal"
