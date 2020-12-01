@@ -2,15 +2,16 @@ package com.gojun.certification.view.study;
 
 import android.content.Context;
 import android.os.Bundle;
-import androidx.annotation.Nullable;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.RadioButton;
+
+import androidx.annotation.Nullable;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.gojun.certification.R;
 import com.gojun.certification.core.BaseFragment;
@@ -57,7 +58,7 @@ public class QuestionFragment extends BaseFragment implements View.OnClickListen
 
     @Override
     public void onDestroyView() {
-        if(mainView!=null){
+        if(mainView != null && mainView.getParent() != null){
             ((ViewGroup)mainView.getParent()).removeView(mainView);
         }
         super.onDestroyView();
