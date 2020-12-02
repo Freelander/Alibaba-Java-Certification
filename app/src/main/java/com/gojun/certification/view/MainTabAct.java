@@ -27,7 +27,7 @@ public class MainTabAct extends BaseActivity implements View.OnClickListener{
 
     StudyFragment mStudyFragment;
     AuthFragment mGiftFragment;
-    FailFragment mFailFragment;
+    FailTopicFragment mFailTopicFragment;
     SettingFragment mSettingFragment;
 
     int[] tabIds={R.id.tab_test,R.id.tab_exam,R.id.tab_failed,R.id.tab_setting};
@@ -40,7 +40,7 @@ public class MainTabAct extends BaseActivity implements View.OnClickListener{
 
         mStudyFragment=new StudyFragment();
         mGiftFragment=new AuthFragment();
-        mFailFragment=new FailFragment();
+        mFailTopicFragment =new FailTopicFragment();
         mSettingFragment=new SettingFragment();
 
         initUI();
@@ -125,7 +125,7 @@ public class MainTabAct extends BaseActivity implements View.OnClickListener{
                 addFragmentContainer(contentFragment,mGiftFragment,R.id.container);
                 break;
             case R.id.tab_failed:
-                addFragmentContainer(contentFragment,mFailFragment,R.id.container);
+                addFragmentContainer(contentFragment, mFailTopicFragment,R.id.container);
                 break;
             case R.id.tab_setting:
                 addFragmentContainer(contentFragment,mSettingFragment,R.id.container);
@@ -154,7 +154,7 @@ public class MainTabAct extends BaseActivity implements View.OnClickListener{
         }
         ((ViewGroup)$(tabIds[0]).getParent()).setBackgroundColor(themeColor);
         mStudyFragment.tintTheme();
-        mFailFragment.tintTheme();
+        mFailTopicFragment.tintTheme();
         mGiftFragment.tintTheme();
     }
     boolean canBack;

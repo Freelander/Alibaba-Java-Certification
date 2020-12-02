@@ -2,13 +2,14 @@ package com.gojun.certification.view.study;
 
 import android.content.Context;
 import android.os.Bundle;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentStatePagerAdapter;
-import androidx.viewpager.widget.ViewPager;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentStatePagerAdapter;
+import androidx.viewpager.widget.ViewPager;
 
 import com.gojun.certification.R;
 import com.gojun.certification.core.BaseActivity;
@@ -17,11 +18,11 @@ import com.gojun.certification.core.DataManager;
 import com.gojun.certification.core.SessionData;
 import com.gojun.certification.core.async.XAsyncTask;
 import com.gojun.certification.core.async.XAsyncTaskListenerCompat;
+import com.gojun.certification.global.Constant;
 import com.gojun.certification.model.QuestionModel;
 import com.gojun.certification.utils.IntentHelper;
 import com.gojun.certification.utils.LogCat;
 import com.gojun.certification.utils.Utils;
-import com.gojun.certification.view.FailFragment;
 import com.gojun.certification.view.StudyFragment;
 import com.gojun.certification.view.dev.DevToolsAct;
 import com.gojun.certification.widget.TitleBar;
@@ -179,7 +180,7 @@ public class StudyAct extends BaseActivity implements View.OnClickListener,Study
         //加载错题
         ArrayList<QuestionModel> mLocFailModels = null;
         try {
-            mLocFailModels= (ArrayList<QuestionModel>) DataManager.getInstance().readList(mContext, FailFragment.CACHE_FAIL_DATA);
+            mLocFailModels= (ArrayList<QuestionModel>) DataManager.getInstance().readList(mContext, Constant.CACHE_FAIL_DATA);
         } catch (Exception e) {
 //                    e.printStackTrace();
         }
@@ -374,7 +375,7 @@ public class StudyAct extends BaseActivity implements View.OnClickListener,Study
                 for (QuestionModel failModel : mFailModels) {
                     LogCat.i("错题记录="+failModel);
                 }
-                DataManager.getInstance().saveList(mContext,FailFragment.CACHE_FAIL_DATA,new ArrayList<>(mFailModels));
+                DataManager.getInstance().saveList(mContext,Constant.CACHE_FAIL_DATA,new ArrayList<>(mFailModels));
 
                 DataManager.getInstance().saveList(mContext,StudyFragment.CACHE_HISTORY_STUDY,nowRecord);
                 return null;

@@ -8,12 +8,12 @@ import com.gojun.certification.core.DataManager;
 import com.gojun.certification.core.SessionData;
 import com.gojun.certification.core.async.XAsyncTask;
 import com.gojun.certification.core.async.XAsyncTaskListenerCompat;
+import com.gojun.certification.global.Constant;
 import com.gojun.certification.model.AnswerModel;
 import com.gojun.certification.model.QuestionModel;
 import com.gojun.certification.utils.IntentHelper;
 import com.gojun.certification.utils.LogCat;
 import com.gojun.certification.utils.Utils;
-import com.gojun.certification.view.FailFragment;
 import com.gojun.certification.view.setting.HighSetAct;
 import com.gojun.certification.view.study.StudyAct;
 
@@ -106,7 +106,7 @@ public class FailAct extends StudyAct{
                 }
                 LogCat.w("移除结束，剩余"+mGiftModels.size()+"道");
 
-                DataManager.getInstance().saveList(mContext, FailFragment.CACHE_FAIL_DATA,mGiftModels);
+                DataManager.getInstance().saveList(mContext, Constant.CACHE_FAIL_DATA,mGiftModels);
                 return null;
             }
 

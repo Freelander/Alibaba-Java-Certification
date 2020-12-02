@@ -10,6 +10,7 @@
     <string name="custom_theme">自定义主题色</string>
     <string name="high_setting">高级设置</string>
     <string name="setting">设置</string>
+    <string name="fail_topic">错题</string>
 
 
 </resources>

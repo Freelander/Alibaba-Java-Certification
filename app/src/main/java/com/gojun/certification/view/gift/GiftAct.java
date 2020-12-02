@@ -10,11 +10,11 @@ import com.gojun.certification.R;
 import com.gojun.certification.core.DataManager;
 import com.gojun.certification.core.async.XAsyncTask;
 import com.gojun.certification.core.async.XAsyncTaskListenerCompat;
+import com.gojun.certification.global.Constant;
 import com.gojun.certification.model.AnswerModel;
 import com.gojun.certification.model.QuestionModel;
 import com.gojun.certification.utils.LogCat;
 import com.gojun.certification.utils.Utils;
-import com.gojun.certification.view.FailFragment;
 import com.gojun.certification.view.dev.DevToolsAct;
 import com.gojun.certification.view.study.QuestionFragment;
 import com.gojun.certification.view.study.StudyAct;
@@ -193,7 +193,7 @@ public class GiftAct extends StudyAct implements View.OnClickListener{
             @Override
             public Object doInBackground(Context context, Object... objects) {
                 if(!Utils.isEmpty(mFailModels)){
-                    DataManager.getInstance().saveList(mContext, FailFragment.CACHE_FAIL_DATA,new ArrayList<>(mFailModels));
+                    DataManager.getInstance().saveList(mContext, Constant.CACHE_FAIL_DATA,new ArrayList<>(mFailModels));
                 }
                 return null;
             }
