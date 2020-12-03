@@ -63,9 +63,4 @@ public abstract class BaseAndroidViewModel extends AndroidViewModel {
     public void showShortToast(String msg) {
         Toast.makeText(getApplication(), msg, Toast.LENGTH_SHORT).show();
     }
-
-    //Fragment或者Activity的onStart调用，用于触发数据拉取场景等
-    public void onStart() {
-
-    }
 }

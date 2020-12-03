@@ -11,6 +11,7 @@
     <string name="high_setting">高级设置</string>
     <string name="setting">设置</string>
     <string name="fail_topic">错题</string>
+    <string name="simulation_auth">模拟认证</string>
 
 
 </resources>

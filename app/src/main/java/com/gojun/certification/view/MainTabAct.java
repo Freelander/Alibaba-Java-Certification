@@ -26,7 +26,7 @@ public class MainTabAct extends BaseActivity implements View.OnClickListener{
     public BaseFragment contentFragment;
 
     StudyFragment mStudyFragment;
-    AuthFragment mGiftFragment;
+    SimulationAuthFragment mGiftFragment;
     FailTopicFragment mFailTopicFragment;
     SettingFragment mSettingFragment;
 
@@ -39,7 +39,7 @@ public class MainTabAct extends BaseActivity implements View.OnClickListener{
 
 
         mStudyFragment=new StudyFragment();
-        mGiftFragment=new AuthFragment();
+        mGiftFragment=new SimulationAuthFragment();
         mFailTopicFragment =new FailTopicFragment();
         mSettingFragment=new SettingFragment();
 
