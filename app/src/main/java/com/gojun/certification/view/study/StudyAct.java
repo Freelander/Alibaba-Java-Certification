@@ -23,7 +23,6 @@ import com.gojun.certification.model.QuestionModel;
 import com.gojun.certification.utils.IntentHelper;
 import com.gojun.certification.utils.LogCat;
 import com.gojun.certification.utils.Utils;
-import com.gojun.certification.view.StudyFragment;
 import com.gojun.certification.view.dev.DevToolsAct;
 import com.gojun.certification.widget.TitleBar;
 import com.gojun.certification.widget.XDialog;
@@ -131,7 +130,7 @@ public class StudyAct extends BaseActivity implements View.OnClickListener,Study
     public void initData(){
         showProgressDialog("");
 
-        DataManager.getInstance().readListAsync(mContext, StudyFragment.CACHE_HISTORY_STUDY, new DataManager.OnReadListener() {
+        DataManager.getInstance().readListAsync(mContext, Constant.CACHE_HISTORY_STUDY, new DataManager.OnReadListener() {
             @Override
             public void onSuccess(Object mlist) {
 
@@ -366,7 +365,7 @@ public class StudyAct extends BaseActivity implements View.OnClickListener,Study
             @Override
             public void onPreExecute(Context context) {
 
-                SessionData.setObject(mContext, StudyFragment.SP_STUDY_LAST_CURRENT,nowPage);
+                SessionData.setObject(mContext, Constant.SP_STUDY_LAST_CURRENT,nowPage);
                 showProgressDialog(nowPage==0?"":"保存进度...");
             }
 
@@ -377,7 +376,7 @@ public class StudyAct extends BaseActivity implements View.OnClickListener,Study
                 }
                 DataManager.getInstance().saveList(mContext,Constant.CACHE_FAIL_DATA,new ArrayList<>(mFailModels));
 
-                DataManager.getInstance().saveList(mContext,StudyFragment.CACHE_HISTORY_STUDY,nowRecord);
+                DataManager.getInstance().saveList(mContext,Constant.CACHE_HISTORY_STUDY,nowRecord);
                 return null;
             }
 

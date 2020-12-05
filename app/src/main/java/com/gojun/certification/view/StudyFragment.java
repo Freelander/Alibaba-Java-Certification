@@ -3,114 +3,86 @@ package com.gojun.certification.view;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import androidx.annotation.Nullable;
-import androidx.core.widget.ContentLoadingProgressBar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import androidx.annotation.Nullable;
+import androidx.lifecycle.ViewModelProvider;
 
 import com.gojun.certification.R;
 import com.gojun.certification.core.BaseFragment;
 import com.gojun.certification.core.DataManager;
 import com.gojun.certification.core.SessionData;
+import com.gojun.certification.databinding.FragmentStudyBinding;
+import com.gojun.certification.global.Constant;
 import com.gojun.certification.model.QuestionModel;
 import com.gojun.certification.utils.AppConstants;
 import com.gojun.certification.utils.IntentHelper;
 import com.gojun.certification.view.study.StudyAct;
 import com.gojun.certification.widget.XDialog;
-import com.umeng.analytics.MobclickAgent;
 
 import java.util.ArrayList;
 
-/**
- * 练习
- * Created by Porster on 17/3/8.
- */
+public class StudyFragment extends BaseFragment {
 
-public class StudyFragment extends BaseFragment implements View.OnClickListener{
-    public static final String CACHE_HISTORY_STUDY="CACHE_HISTORY_STUDY";
-    public static final String SP_STUDY_LAST_CURRENT="SP_STUDY_LAST_CURRENT";
+    private StudyViewModel mViewModel;
+    private FragmentStudyBinding mBinding;
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        mViewModel = new ViewModelProvider(this).get(StudyViewModel.class);
+        mViewModel.init(requireActivity(), R.string.study);
+        mViewModel.loadData(requireContext());
+    }
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
-        mainView=inflater.inflate(R.layout.fragment_study,container,false);
-        return mainView;
+        mBinding = FragmentStudyBinding.inflate(inflater);
+        mBinding.setViewModel(mViewModel);
+        mBinding.setFragment(this);
+
+        setupObserve();
+        return mBinding.getRoot();
     }
 
-    @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-        initUI();
-    }
-
-    private void initUI() {
-        addActionBar("练习").getLeft().setVisibility(View.GONE);;
-        $(R.id.t_start,this).setEnabled(false);
-        $(R.id.study_delete,this);
-        loadData();
-    }
-    private void loadData(){
-//        ((ContentLoadingProgressBar)$(R.id.study_load)).show();
-        VISIBLE($(R.id.study_load));
-        DataManager.getInstance().readListAsync(mContext, CACHE_HISTORY_STUDY, new DataManager.OnReadListener() {
-            @Override
-            public void onSuccess(Object mObj) {
-
-                ArrayList<QuestionModel> list= (ArrayList<QuestionModel>) mObj;
-                ((ContentLoadingProgressBar)$(R.id.study_load)).hide();
-                $(R.id.t_start).setEnabled(true);
-
-                if(list!=null&&list.size()>0){
-
-                    int current= (int) SessionData.getObject(mContext,SP_STUDY_LAST_CURRENT,0);
-
-                    setText(R.id.study_start_tip,current==0?"开始练习":"上次做到第"+current+"题");
-
-                    VISIBLE($(R.id.study_delete));
-                }else{
-                    GONE($(R.id.study_delete));
-
-                    setText(R.id.study_start_tip,"");
-                }
-            }
-        });
-    }
-
-    @Override
-    public void onClick(View v) {
-        switch (v.getId()){
-            case R.id.t_start:
-                MobclickAgent.onEvent(mContext,"GiftStudy");
-                Bundle k=new Bundle();
-                IntentHelper.openClassResult(mContext,StudyAct.class, AppConstants.REQUEST_CODE);
-                break;
-            case R.id.study_delete:
+    private void setupObserve() {
+        mViewModel.getClickDeleteEvent().observe(getViewLifecycleOwner(), aBoolean -> {
+            if (aBoolean) {
                 XDialog.showSelectDialog(mContext, "是否清空做题记录", new XDialog.DialogClickListener() {
                     @Override
                     public void confirm() {
-                        DataManager.getInstance().saveListAsync(mContext,CACHE_HISTORY_STUDY,new ArrayList<QuestionModel>());
+                        DataManager.getInstance().saveListAsync(mContext, Constant.CACHE_HISTORY_STUDY, new ArrayList<QuestionModel>());
+                        SessionData.setObject(mContext, Constant.SP_STUDY_LAST_CURRENT, 0);
+                        mViewModel.getStartTipText().add(0, "");
+                        mViewModel.getDeleteVisible().set(false);
                     }
+
                     @Override
                     public void cancel() {
 
                     }
                 });
-                break;
-        }
+            }
+        });
+
+        mViewModel.getClickStartEvent().observe(getViewLifecycleOwner(), aBoolean -> {
+            if (aBoolean) {
+                Bundle k = new Bundle();
+                IntentHelper.openClassResult(mContext, StudyAct.class, AppConstants.REQUEST_CODE);
+            }
+        });
     }
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if(resultCode== Activity.RESULT_OK){
-            int current= (int) SessionData.getObject(mContext,SP_STUDY_LAST_CURRENT,0);
-            setText(R.id.study_start_tip,current==0?"开始练习":"上次做到第"+current+"题");
-            if(current>0){
-                VISIBLE($(R.id.study_delete));
-            }else{
-                GONE($(R.id.study_delete));
-            }
+        if (resultCode == Activity.RESULT_OK) {
+            int current = (int) SessionData.getObject(mContext, Constant.SP_STUDY_LAST_CURRENT, 0);
+            mViewModel.getStartTipText().add(0, current == 0 ? "开始练习" : "上次做到第" + current + "题");
+            mViewModel.getDeleteVisible().set(current > 0);
         }
     }
 }

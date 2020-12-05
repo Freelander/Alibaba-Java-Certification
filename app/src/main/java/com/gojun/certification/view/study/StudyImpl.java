@@ -5,9 +5,9 @@ import android.os.Bundle;
 
 import com.gojun.certification.core.BaseFragment;
 import com.gojun.certification.core.SessionData;
+import com.gojun.certification.global.Constant;
 import com.gojun.certification.model.QuestionModel;
 import com.gojun.certification.utils.IntentHelper;
-import com.gojun.certification.view.StudyFragment;
 
 import java.util.ArrayList;
 
@@ -39,7 +39,7 @@ public class StudyImpl implements StudyM{
 
     @Override
     public int gotoLastQuestion(Context mCtx) {
-        return (int) SessionData.getObject(mCtx, StudyFragment.SP_STUDY_LAST_CURRENT,0);
+        return (int) SessionData.getObject(mCtx, Constant.SP_STUDY_LAST_CURRENT,0);
     }
 
     @Override

@@ -1,69 +1,90 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent"
-              android:background="@color/bg_color"
-              android:orientation="vertical">
+<layout>
+    <data>
+        <variable
+            name="viewModel"
+            type="com.gojun.certification.view.StudyViewModel" />
 
-    <include layout="@layout/layout_title"/>
+        <variable
+            name="fragment"
+            type="androidx.fragment.app.Fragment" />
+    </data>
 
-    <com.gojun.certification.widget.md.MaterialLinearLayout
-        android:id="@+id/t_start"
-        style="@style/padding"
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:background="@color/white">
+        android:layout_height="match_parent"
+        android:background="@color/bg_color"
+        android:orientation="vertical">
+
+        <include
+            layout="@layout/layout_title"
+            app:viewModel="@{viewModel}"/>
+
+        <com.gojun.certification.widget.md.MaterialLinearLayout
+            android:id="@+id/t_start"
+            style="@style/padding"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:background="@color/white"
+            android:onClick="@{() -> viewModel.sendClickStudyEvent()}">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:drawableStart="@drawable/t_start"
+                android:drawablePadding="10dp"
+                android:gravity="center|start"
+                android:text="@string/study_start"
+                android:textSize="16sp"/>
+
+            <androidx.core.widget.ContentLoadingProgressBar
+                android:id="@+id/study_load"
+                style="?android:attr/progressBarStyleSmall"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                app:bindViewVisibility="@{viewModel.loadVisible}"/>
+
+            <TextView
+                android:id="@+id/study_start_tip"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawablePadding="10dp"
+                android:drawableEnd="@drawable/right"
+                android:gravity="center"
+                android:textSize="16sp"
+                app:bindText="@{viewModel.startTipText.get(0)}"/>
+
+        </com.gojun.certification.widget.md.MaterialLinearLayout>
+
+        <View style="@style/divider_horizontal"/>
+
+        <com.gojun.certification.widget.md.MaterialTextView
+            android:id="@+id/study_delete"
+            style="@style/padding"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:drawableStart="@drawable/delete"
+            android:drawablePadding="10dp"
+            android:drawableEnd="@drawable/right"
+            android:gravity="center|start"
+            android:text="清空做题记录"
+            android:textSize="16sp"
+            android:visibility="gone"
+            android:onClick="@{() -> viewModel.sendClickDeleteEvent()}"
+            app:bindViewVisibility="@{viewModel.deleteVisible}"/>
+
+        <View style="@style/divider_horizontal"/>
 
         <TextView
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:drawableLeft="@drawable/t_start"
-            android:drawablePadding="10dp"
-            android:gravity="center|left"
-            android:text="@string/study_start"
-            android:textSize="16sp"/>
-
-        <androidx.core.widget.ContentLoadingProgressBar
-            android:id="@+id/study_load"
-            style="?android:attr/progressBarStyleSmall"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"/>
-
-        <TextView
-            android:id="@+id/study_start_tip"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:drawablePadding="10dp"
-            android:drawableRight="@drawable/right"
-            android:gravity="center"
-            android:textSize="16sp"/>
-    </com.gojun.certification.widget.md.MaterialLinearLayout>
-
-    <View style="@style/divider_horizontal"/>
-
-    <com.gojun.certification.widget.md.MaterialTextView
-        android:id="@+id/study_delete"
-        style="@style/padding"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/white"
-        android:drawableLeft="@drawable/delete"
-        android:drawablePadding="10dp"
-        android:drawableRight="@drawable/right"
-        android:gravity="center|left"
-        android:text="清空做题记录"
-        android:textSize="16sp"
-        android:visibility="gone"/>
-
-    <View style="@style/divider_horizontal"/>
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:text="@string/study_tips"
-        android:textColor="@color/gray_txt"/>
-</LinearLayout>
+            android:layout_margin="10dp"
+            android:text="@string/study_tips"
+            android:textColor="@color/gray_txt"/>
+    </LinearLayout>
+</layout>
