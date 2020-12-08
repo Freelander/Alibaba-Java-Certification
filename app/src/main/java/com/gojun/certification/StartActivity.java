@@ -4,7 +4,7 @@ import android.os.Bundle;
 import android.view.KeyEvent;
 
 import com.gojun.certification.core.BaseActivity;
-import com.gojun.certification.view.MainTabAct;
+import com.gojun.certification.view.MainActivity;
 
 /**
 *   欢迎页
@@ -31,7 +31,7 @@ public class StartActivity extends BaseActivity{
             },2000);
     }
     public void goOn(){
-        to(MainTabAct.class);
+        to(MainActivity.class);
         finish();
     }
     @Override

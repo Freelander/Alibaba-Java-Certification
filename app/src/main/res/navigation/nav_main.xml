@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_main"
+    app:startDestination="@id/study_page">
+
+    <fragment
+        android:id="@+id/study_page"
+        android:name="com.gojun.certification.view.StudyFragment"
+        android:label="StudyFragment" />
+
+    <fragment
+        android:id="@+id/auth_page"
+        android:name="com.gojun.certification.view.SimulationAuthFragment"
+        android:label="SimulationAuthFragment" />
+
+    <fragment
+        android:id="@+id/fail_page"
+        android:name="com.gojun.certification.view.FailTopicFragment"
+        android:label="FailTopicFragment" />
+
+    <fragment
+        android:id="@+id/setting_page"
+        android:name="com.gojun.certification.view.SettingFragment"
+        android:label="SettingFragment" />
+
+
+</navigation>

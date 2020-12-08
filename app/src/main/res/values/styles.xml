@@ -9,10 +9,10 @@
         <item name="android:activityCloseExitAnimation">@anim/x_push_out</item>
     </style>
 
-    <style name="BaseTheme.AppTheme" parent="@android:style/Theme.Black.NoTitleBar">
+    <style name="BaseTheme.AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
     </style>
 
-    <style name="AlphaActivity">
+    <style name="BaseTheme.AppTheme.AlphaActivity">
         <item name="android:windowIsTranslucent">true</item>
         <item name="android:windowNoTitle">true</item>
         <item name="android:windowBackground">@color/transparent</item>

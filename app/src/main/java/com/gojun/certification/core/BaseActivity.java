@@ -8,8 +8,6 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import androidx.annotation.Nullable;
-import androidx.fragment.app.FragmentActivity;
 import android.text.TextUtils;
 import android.util.SparseArray;
 import android.view.Gravity;
@@ -23,6 +21,9 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.gojun.certification.R;
 import com.gojun.certification.utils.ApiUtils;
 import com.gojun.certification.utils.IntentHelper;
@@ -34,7 +35,7 @@ import com.gojun.certification.widget.TitleBar;
  * Created by Porster on 17/2/22.
  */
 
-public class BaseActivity extends FragmentActivity{
+public class BaseActivity extends AppCompatActivity {
     private SparseArray<View> mViewCache = new SparseArray<>();
 
     public Context mContext;

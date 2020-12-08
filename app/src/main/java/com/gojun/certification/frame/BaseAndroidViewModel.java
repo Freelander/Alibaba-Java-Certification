@@ -42,7 +42,9 @@ public abstract class BaseAndroidViewModel extends AndroidViewModel {
 
     public final void init(Activity activity, @StringRes int titleResId) {
         mThemeColor = (int) SessionData.getObject(activity, ThemeCore.THEME_COLOR, ThemeCore.THEME_DEF_COLOR);
-        mTitle = activity.getString(titleResId);
+        if (titleResId != -1) {
+            mTitle = activity.getString(titleResId);
+        }
     }
 
     public int getThemeColor() {
