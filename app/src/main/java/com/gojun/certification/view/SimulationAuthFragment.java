@@ -20,7 +20,7 @@ public class SimulationAuthFragment extends BaseFragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mViewModel = new ViewModelProvider(this).get(SimulationAuthViewModel.class);
+        mViewModel = new ViewModelProvider(requireActivity()).get(SimulationAuthViewModel.class);
         mViewModel.init(requireActivity(), R.string.simulation_auth);
     }
 

@@ -32,7 +32,7 @@ public class StudyFragment extends BaseFragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mViewModel = new ViewModelProvider(this).get(StudyViewModel.class);
+        mViewModel = new ViewModelProvider(requireActivity()).get(StudyViewModel.class);
         mViewModel.init(requireActivity(), R.string.study);
         mViewModel.loadData(requireContext());
     }

@@ -7,6 +7,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.StringRes;
+import androidx.databinding.ObservableInt;
 import androidx.lifecycle.AndroidViewModel;
 
 import com.gojun.certification.core.SessionData;
@@ -21,7 +22,8 @@ public abstract class BaseAndroidViewModel extends AndroidViewModel {
 
     private String mTag;
     private String mTitle;
-    private int mThemeColor;
+    private final ObservableInt mThemeColor = new ObservableInt(-1);
+
 
     public BaseAndroidViewModel(@NonNull Application application) {
         super(application);
@@ -41,14 +43,22 @@ public abstract class BaseAndroidViewModel extends AndroidViewModel {
     }
 
     public final void init(Activity activity, @StringRes int titleResId) {
-        mThemeColor = (int) SessionData.getObject(activity, ThemeCore.THEME_COLOR, ThemeCore.THEME_DEF_COLOR);
+        mThemeColor.set((int) SessionData.getObject(activity, ThemeCore.THEME_COLOR, ThemeCore.THEME_DEF_COLOR));
         if (titleResId != -1) {
             mTitle = activity.getString(titleResId);
         }
     }
 
-    public int getThemeColor() {
+    public ObservableInt getThemeColor() {
         return mThemeColor;
+    }
+
+    public int getThemeColor(Activity activity) {
+        return (int) SessionData.getObject(activity, ThemeCore.THEME_COLOR, ThemeCore.THEME_DEF_COLOR);
+    }
+
+    public void setThemeColor(int themeColor) {
+        mThemeColor.set(themeColor);
     }
 
     public String getTitle() {

@@ -1,6 +1,7 @@
 package com.gojun.certification.view;
 
 import android.app.Application;
+import android.content.Intent;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -28,7 +29,9 @@ public class SettingViewModel extends BaseAndroidViewModel {
     }
 
     public void clickCustomThemeColor(Fragment fragment) {
-        IntentHelper.openClassResult(fragment.requireContext(), ThemeAct.class,ThemeAct.REQ_THEME);
+        fragment.startActivityForResult(
+                new Intent(fragment.requireContext(), ThemeAct.class),
+                ThemeAct.REQ_THEME);
     }
 
     public void clickHighSetting(Fragment fragment) {

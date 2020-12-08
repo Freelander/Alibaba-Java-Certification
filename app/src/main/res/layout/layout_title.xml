@@ -6,12 +6,13 @@
             type="com.gojun.certification.frame.BaseAndroidViewModel" />
     </data>
     <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
         android:id="@+id/title_bar_layout"
         android:layout_width="match_parent"
         android:layout_height="45dp"
-        android:background="@{viewModel.themeColor}"
         android:orientation="vertical"
+        app:bindViewBackground="@{viewModel.themeColor}"
         tools:background="@color/theme_color">
 
         <LinearLayout

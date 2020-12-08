@@ -19,6 +19,7 @@ public class MainViewModel extends BaseAndroidViewModel {
     private final SingleLiveEvent<Boolean> mClickAuthEvent = new SingleLiveEvent<>();
     private final SingleLiveEvent<Boolean> mClickFailTopicEvent = new SingleLiveEvent<>();
     private final SingleLiveEvent<Boolean> mClickSettingEvent = new SingleLiveEvent<>();
+    private final SingleLiveEvent<Boolean> mChangeThemeEvent = new SingleLiveEvent<>();
 
     public MainViewModel(@NonNull Application application) {
         super(application);
@@ -40,6 +41,10 @@ public class MainViewModel extends BaseAndroidViewModel {
         return mClickSettingEvent;
     }
 
+    public SingleLiveEvent<Boolean> getChangeThemeEvent() {
+        return mChangeThemeEvent;
+    }
+
     public void sendClickStudyEvent() {
         mClickStudyEvent.setValue(true);
     }
@@ -54,5 +59,9 @@ public class MainViewModel extends BaseAndroidViewModel {
 
     public void sendClickSettingEvent() {
         mClickSettingEvent.setValue(true);
+    }
+
+    public void sendChangeThemeEvent() {
+        mChangeThemeEvent.setValue(true);
     }
 }

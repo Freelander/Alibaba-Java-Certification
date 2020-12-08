@@ -30,4 +30,9 @@ public class BindingAdapters {
             textView.setText(text);
         }
     }
+
+    @BindingAdapter("bindViewBackground")
+    public static void bindViewBackground(View view, int backgroundColor) {
+        view.setBackgroundColor(backgroundColor);
+    }
 }

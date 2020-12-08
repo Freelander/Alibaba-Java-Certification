@@ -21,13 +21,23 @@ import com.gojun.certification.utils.ApiUtils;
 public class MainActivity extends BaseActivity {
 
     private ActivityMainBinding mBinding;
+
     private MainViewModel mViewModel;
+    private StudyViewModel mStudyViewModel;
+    private SimulationAuthViewModel mAuthViewModel;
+    private FailTopicViewModel mFailTopicViewModel;
+    private SettingViewModel mSettingViewModel;
+
     private NavController mNavController;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mViewModel = new ViewModelProvider(this).get(MainViewModel.class);
+        mStudyViewModel = new ViewModelProvider(this).get(StudyViewModel.class);
+        mAuthViewModel = new ViewModelProvider(this).get(SimulationAuthViewModel.class);
+        mFailTopicViewModel = new ViewModelProvider(this).get(FailTopicViewModel.class);
+        mSettingViewModel = new ViewModelProvider(this).get(SettingViewModel.class);
         mViewModel.init(this, -1);
 
         mBinding = ActivityMainBinding.inflate(getLayoutInflater());
@@ -66,10 +76,20 @@ public class MainActivity extends BaseActivity {
             }
         });
 
+        mViewModel.getChangeThemeEvent().observe(this, aBoolean -> {
+            if (aBoolean) {
+                tintTheme();
+            }
+        });
     }
 
-    private void tintTheme(){
-        int themeColor= mViewModel.getThemeColor();
+    private void tintTheme() {
+        int themeColor = mViewModel.getThemeColor(this);
+        mStudyViewModel.setThemeColor(themeColor);
+        mAuthViewModel.setThemeColor(themeColor);
+        mFailTopicViewModel.setThemeColor(themeColor);
+        mSettingViewModel.setThemeColor(themeColor);
+
         if (ApiUtils.isLolinpop()) {
             getWindow().setStatusBarColor(ThemeCore.getStateBarColor(themeColor));
         }
