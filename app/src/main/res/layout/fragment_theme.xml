@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+    <data>
+        <variable
+            name="viewModel"
+            type="com.gojun.certification.view.setting.ThemeViewModel" />
+    </data>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <include
+            layout="@layout/layout_title"
+            app:viewModel="@{viewModel}"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:layout_marginTop="10dp"
+            android:text="拖动滑竿自定义你喜欢的主题色"
+            android:textColor="@color/hint_txt"
+            android:textSize="14sp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <androidx.appcompat.widget.AppCompatSeekBar
+                android:id="@+id/sb_reb"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="15dp"
+                android:layout_marginEnd="-10dp"
+                android:layout_marginTop="10dp"
+                android:layout_weight="1"
+                android:max="255"
+                android:maxHeight="2dp"
+                android:progress="200"
+                android:progressDrawable="@drawable/seekbar_style_red"
+                android:thumb="@drawable/knob"
+                android:thumbOffset="0dp"
+                app:bindThemeSeekBarListener="@{viewModel}" />
+
+            <TextView
+                android:id="@+id/sb_reb_count"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginEnd="5dp"
+                android:gravity="center"
+                android:minWidth="30dp"
+                android:paddingBottom="5dp"
+                android:text="255"
+                android:textColor="@color/theme_color"
+                android:textSize="18sp"
+                app:bindText="@{String.valueOf(viewModel.sbRebValue)}" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <androidx.appcompat.widget.AppCompatSeekBar
+                android:id="@+id/sb_green"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="15dp"
+                android:layout_marginEnd="-10dp"
+                android:layout_marginTop="10dp"
+                android:layout_weight="1"
+                android:max="255"
+                android:maxHeight="2dp"
+                android:progress="100"
+                android:progressDrawable="@drawable/seekbar_style_green"
+                android:thumb="@drawable/knob"
+                android:thumbOffset="0dp"
+                app:bindThemeSeekBarListener="@{viewModel}" />
+
+            <TextView
+                android:id="@+id/sb_green_count"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginEnd="5dp"
+                android:gravity="center"
+                android:minWidth="30dp"
+                android:paddingBottom="5dp"
+                android:text="255"
+                android:textColor="#50AD55"
+                android:textSize="18sp"
+                app:bindText="@{String.valueOf(viewModel.sbGreenValue)}" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <androidx.appcompat.widget.AppCompatSeekBar
+                android:id="@+id/sb_blue"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="15dp"
+                android:layout_marginEnd="-10dp"
+                android:layout_marginTop="10dp"
+                android:layout_weight="1"
+                android:max="255"
+                android:maxHeight="2dp"
+                android:progress="150"
+                android:progressDrawable="@drawable/seekbar_style"
+                android:textStyle="bold"
+                android:thumb="@drawable/knob"
+                android:thumbOffset="0dp"
+                app:bindThemeSeekBarListener="@{viewModel}" />
+
+            <TextView
+                android:id="@+id/sb_blue_count"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginEnd="5dp"
+                android:gravity="center"
+                android:minWidth="30dp"
+                android:paddingBottom="5dp"
+                android:text="255"
+                android:textColor="@color/blue"
+                android:textSize="18sp"
+                app:bindText="@{String.valueOf(viewModel.sbBlueValue)}" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+</layout>

@@ -26,7 +26,6 @@
         <activity android:name=".view.fial.FailAct" />
         <activity android:name=".view.dev.DevToolsAct" />
         <activity android:name=".view.setting.AboutAppAct" />
-        <activity android:name=".view.setting.ThemeAct" />
         <activity android:name=".view.setting.HighSetAct" />
         <activity android:name=".view.gift.GiftAct" />
         <activity android:name=".view.MainActivity" />

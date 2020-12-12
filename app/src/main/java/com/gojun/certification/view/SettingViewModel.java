@@ -1,16 +1,15 @@
 package com.gojun.certification.view;
 
 import android.app.Application;
-import android.content.Intent;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
 import com.gojun.certification.frame.BaseAndroidViewModel;
+import com.gojun.certification.frame.SingleLiveEvent;
 import com.gojun.certification.utils.IntentHelper;
 import com.gojun.certification.view.setting.AboutAppAct;
 import com.gojun.certification.view.setting.HighSetAct;
-import com.gojun.certification.view.setting.ThemeAct;
 
 /**
  * Description:
@@ -20,8 +19,14 @@ import com.gojun.certification.view.setting.ThemeAct;
 
 public class SettingViewModel extends BaseAndroidViewModel {
 
+    private final SingleLiveEvent<Boolean> mClickThemeColorEvent = new SingleLiveEvent<>();
+
     public SettingViewModel(@NonNull Application application) {
         super(application);
+    }
+
+    public SingleLiveEvent<Boolean> getClickThemeColorEvent() {
+        return mClickThemeColorEvent;
     }
 
     public void clickAbout(Fragment fragment) {
@@ -29,9 +34,7 @@ public class SettingViewModel extends BaseAndroidViewModel {
     }
 
     public void clickCustomThemeColor(Fragment fragment) {
-        fragment.startActivityForResult(
-                new Intent(fragment.requireContext(), ThemeAct.class),
-                ThemeAct.REQ_THEME);
+        mClickThemeColorEvent.setValue(true);
     }
 
     public void clickHighSetting(Fragment fragment) {

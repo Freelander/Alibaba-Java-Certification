@@ -22,8 +22,9 @@ public abstract class BaseAndroidViewModel extends AndroidViewModel {
 
     private String mTag;
     private String mTitle;
+    private int mReturnIconResId;
     private final ObservableInt mThemeColor = new ObservableInt(-1);
-
+    private final SingleLiveEvent<Boolean> mClickStartButtonEvent = new SingleLiveEvent();
 
     public BaseAndroidViewModel(@NonNull Application application) {
         super(application);
@@ -47,6 +48,14 @@ public abstract class BaseAndroidViewModel extends AndroidViewModel {
         if (titleResId != -1) {
             mTitle = activity.getString(titleResId);
         }
+    }
+
+    public void setReturnIconResId(int resId) {
+        mReturnIconResId = resId;
+    }
+
+    public int getReturnIconResId() {
+        return mReturnIconResId;
     }
 
     public ObservableInt getThemeColor() {
@@ -74,5 +83,13 @@ public abstract class BaseAndroidViewModel extends AndroidViewModel {
 
     public void showShortToast(String msg) {
         Toast.makeText(getApplication(), msg, Toast.LENGTH_SHORT).show();
+    }
+
+    public SingleLiveEvent<Boolean> getClickStartButtonEvent() {
+        return mClickStartButtonEvent;
+    }
+
+    public void sendClickStartButtonEvent() {
+        mClickStartButtonEvent.setValue(true);
     }
 }

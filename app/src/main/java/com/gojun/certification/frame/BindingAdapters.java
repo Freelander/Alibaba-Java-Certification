@@ -35,4 +35,14 @@ public class BindingAdapters {
     public static void bindViewBackground(View view, int backgroundColor) {
         view.setBackgroundColor(backgroundColor);
     }
+
+    @BindingAdapter("bindStartDrawable")
+    public static void bindStartDrawable(TextView textView, int iconResId) {
+        if (iconResId <= 0) {
+            return;
+        }
+
+        textView.setCompoundDrawablesRelativeWithIntrinsicBounds(iconResId, 0, 0, 0);
+        textView.setVisibility(View.VISIBLE);
+    }
 }

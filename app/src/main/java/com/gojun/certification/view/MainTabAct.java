@@ -13,7 +13,6 @@ import com.gojun.certification.core.DataManager;
 import com.gojun.certification.core.SessionData;
 import com.gojun.certification.core.ThemeCore;
 import com.gojun.certification.utils.ApiUtils;
-import com.gojun.certification.view.setting.ThemeAct;
 import com.gojun.certification.widget.XDialog;
 
 /**

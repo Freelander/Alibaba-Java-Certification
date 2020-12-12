@@ -9,11 +9,11 @@ import android.view.ViewGroup;
 
 import androidx.annotation.Nullable;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.navigation.fragment.NavHostFragment;
 
 import com.gojun.certification.R;
 import com.gojun.certification.core.BaseFragment;
 import com.gojun.certification.databinding.FragmentSettingBinding;
-import com.gojun.certification.view.setting.ThemeAct;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -33,6 +33,7 @@ public class SettingFragment extends BaseFragment {
         mBinding.setViewModel(mViewModel);
         mBinding.setFragment(this);
 
+        setupObserve();
         return mBinding.getRoot();
     }
 
@@ -42,5 +43,13 @@ public class SettingFragment extends BaseFragment {
         if (requestCode == ThemeAct.REQ_THEME && resultCode == Activity.RESULT_OK) {
             mMainViewModel.sendChangeThemeEvent();
         }
+    }
+
+    private void setupObserve() {
+        mViewModel.getClickThemeColorEvent().observe(getViewLifecycleOwner(), aBoolean -> {
+            if (aBoolean) {
+                NavHostFragment.findNavController(this).navigate(R.id.action_setting_page_to_theme_page);
+            }
+        });
     }
 }

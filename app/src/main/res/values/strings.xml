@@ -13,6 +13,7 @@
     <string name="fail_topic">错题</string>
     <string name="simulation_auth">模拟认证</string>
     <string name="study">练习</string>
+    <string name="theme_color">主题色</string>
 
 
 </resources>

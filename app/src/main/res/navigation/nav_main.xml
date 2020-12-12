@@ -22,7 +22,19 @@
     <fragment
         android:id="@+id/setting_page"
         android:name="com.gojun.certification.view.SettingFragment"
-        android:label="SettingFragment" />
+        android:label="SettingFragment" >
+        <action
+            android:id="@+id/action_setting_page_to_theme_page"
+            app:destination="@id/theme_page"
+            app:enterAnim="@anim/activity_enter"
+            app:exitAnim="@anim/activity_exit"
+            app:popEnterAnim="@anim/activity_pop_enter"
+            app:popExitAnim="@anim/activity_pop_exit" />
+    </fragment>
 
+    <fragment
+        android:id="@+id/theme_page"
+        android:name="com.gojun.certification.view.setting.ThemeFragment"
+        android:label="ThemeFragment" />
 
 </navigation>
