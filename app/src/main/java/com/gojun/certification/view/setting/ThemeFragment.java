@@ -39,6 +39,9 @@ public class ThemeFragment extends BaseFragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         mBinding = FragmentThemeBinding.inflate(inflater);
         mBinding.setViewModel(mViewModel);
+        mBinding.setRebValue(mViewModel.getSbRebValue().get());
+        mBinding.setGreenValue(mViewModel.getSbGreenValue().get());
+        mBinding.setBlueValue(mViewModel.getSbBlueValue().get());
 
         setupObservers();
         return mBinding.getRoot();

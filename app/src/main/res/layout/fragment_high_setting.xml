@@ -47,9 +47,10 @@
                 android:paddingBottom="10dp"
                 android:paddingTop="10dp"
                 android:progress="@{progress}"
-                android:progressDrawable="@drawable/seekbar_style"
+
                 android:thumb="@drawable/knob"
                 android:thumbOffset="0dp"
+                app:bindSeekBarProgressColor="@{viewModel.themeColor}"
                 app:bindHighSettingSeekBarListener="@{viewModel}"/>
             
             <TextView

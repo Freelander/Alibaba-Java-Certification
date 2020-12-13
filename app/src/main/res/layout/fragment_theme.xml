@@ -4,10 +4,23 @@
         <variable
             name="viewModel"
             type="com.gojun.certification.view.setting.ThemeViewModel" />
+
+        <variable
+            name="rebValue"
+            type="int" />
+
+        <variable
+            name="greenValue"
+            type="int" />
+
+        <variable
+            name="blueValue"
+            type="int" />
     </data>
 
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
@@ -39,11 +52,12 @@
                 android:layout_weight="1"
                 android:max="255"
                 android:maxHeight="2dp"
-                android:progress="200"
+                android:progress="@{rebValue}"
                 android:progressDrawable="@drawable/seekbar_style_red"
                 android:thumb="@drawable/knob"
                 android:thumbOffset="0dp"
-                app:bindThemeSeekBarListener="@{viewModel}" />
+                app:bindThemeSeekBarListener="@{viewModel}"
+                tools:progress="200"/>
 
             <TextView
                 android:id="@+id/sb_reb_count"
@@ -54,10 +68,10 @@
                 android:gravity="center"
                 android:minWidth="30dp"
                 android:paddingBottom="5dp"
-                android:text="255"
                 android:textColor="@color/theme_color"
                 android:textSize="18sp"
-                app:bindText="@{String.valueOf(viewModel.sbRebValue)}" />
+                app:bindText="@{String.valueOf(viewModel.sbRebValue)}"
+                tools:text="255" />
 
         </LinearLayout>
 
@@ -75,11 +89,12 @@
                 android:layout_weight="1"
                 android:max="255"
                 android:maxHeight="2dp"
-                android:progress="100"
+                android:progress="@{greenValue}"
                 android:progressDrawable="@drawable/seekbar_style_green"
                 android:thumb="@drawable/knob"
                 android:thumbOffset="0dp"
-                app:bindThemeSeekBarListener="@{viewModel}" />
+                app:bindThemeSeekBarListener="@{viewModel}"
+                tools:progress="100"/>
 
             <TextView
                 android:id="@+id/sb_green_count"
@@ -90,10 +105,10 @@
                 android:gravity="center"
                 android:minWidth="30dp"
                 android:paddingBottom="5dp"
-                android:text="255"
                 android:textColor="#50AD55"
                 android:textSize="18sp"
-                app:bindText="@{String.valueOf(viewModel.sbGreenValue)}" />
+                app:bindText="@{String.valueOf(viewModel.sbGreenValue)}"
+                tools:text="255" />
         </LinearLayout>
 
         <LinearLayout
@@ -110,12 +125,13 @@
                 android:layout_weight="1"
                 android:max="255"
                 android:maxHeight="2dp"
-                android:progress="150"
+                android:progress="@{blueValue}"
                 android:progressDrawable="@drawable/seekbar_style"
                 android:textStyle="bold"
                 android:thumb="@drawable/knob"
                 android:thumbOffset="0dp"
-                app:bindThemeSeekBarListener="@{viewModel}" />
+                app:bindThemeSeekBarListener="@{viewModel}"
+                tools:progress="150" />
 
             <TextView
                 android:id="@+id/sb_blue_count"
@@ -126,10 +142,10 @@
                 android:gravity="center"
                 android:minWidth="30dp"
                 android:paddingBottom="5dp"
-                android:text="255"
                 android:textColor="@color/blue"
                 android:textSize="18sp"
-                app:bindText="@{String.valueOf(viewModel.sbBlueValue)}" />
+                app:bindText="@{String.valueOf(viewModel.sbBlueValue)}"
+                tools:text="255" />
 
         </LinearLayout>
 

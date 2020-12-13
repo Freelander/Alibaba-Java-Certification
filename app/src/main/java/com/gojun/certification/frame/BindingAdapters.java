@@ -1,5 +1,7 @@
 package com.gojun.certification.frame;
 
+import android.graphics.PorterDuff;
+import android.graphics.PorterDuffColorFilter;
 import android.view.View;
 import android.widget.TextView;
 
@@ -58,8 +60,9 @@ public class BindingAdapters {
         view.setSelected(view.getId() == currentItemId);
     }
 
-    @BindingAdapter("bindSeekBarProgress")
-    public static void bindSeekBarProgress(AppCompatSeekBar seekBar, int progress) {
-        seekBar.setProgress(progress);
+    @BindingAdapter("bindSeekBarProgressColor")
+    public static void bindSeekBarProgressColor(AppCompatSeekBar seekBar, int color) {
+        seekBar.getProgressDrawable().setColorFilter(
+                new PorterDuffColorFilter(color, PorterDuff.Mode.SRC_IN));
     }
 }
