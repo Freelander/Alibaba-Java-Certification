@@ -12,7 +12,7 @@ import com.gojun.certification.R;
  *
  * @author Jun 12/12/20
  */
-public class ThemeBindingAdapters {
+public class SettingBindingAdapters {
 
     @BindingAdapter("bindThemeSeekBarListener")
     public static void bindThemeSeekBarListener(AppCompatSeekBar seekBar, ThemeViewModel viewModel) {
@@ -38,6 +38,29 @@ public class ThemeBindingAdapters {
                     return;
                 }
                 viewModel.sendChangeThemeColorEvent();
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+
+            }
+        });
+    }
+
+    @BindingAdapter("bindHighSettingSeekBarListener")
+    public static void bindHighSettingSeekBarListener(AppCompatSeekBar seekBar, HighSettingViewModel viewModel) {
+        seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                if (progress == 0) {
+                    progress += 1;
+                }
+                viewModel.getFailedCount().set(progress);
             }
 
             @Override

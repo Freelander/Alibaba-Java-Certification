@@ -3,6 +3,7 @@ package com.gojun.certification.frame;
 import android.view.View;
 import android.widget.TextView;
 
+import androidx.appcompat.widget.AppCompatSeekBar;
 import androidx.databinding.BindingAdapter;
 
 import com.gojun.certification.view.MainViewModel;
@@ -55,5 +56,10 @@ public class BindingAdapters {
     @BindingAdapter("bindBottomNavItemSelect")
     public static void bindBottomNavItemSelect(View view, int currentItemId) {
         view.setSelected(view.getId() == currentItemId);
+    }
+
+    @BindingAdapter("bindSeekBarProgress")
+    public static void bindSeekBarProgress(AppCompatSeekBar seekBar, int progress) {
+        seekBar.setProgress(progress);
     }
 }

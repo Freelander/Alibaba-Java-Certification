@@ -9,7 +9,6 @@ import com.gojun.certification.R;
 import com.gojun.certification.frame.SingleLiveEvent;
 import com.gojun.certification.utils.IntentHelper;
 import com.gojun.certification.view.setting.AboutAppAct;
-import com.gojun.certification.view.setting.HighSetAct;
 
 /**
  * Description:
@@ -20,6 +19,7 @@ import com.gojun.certification.view.setting.HighSetAct;
 public class SettingViewModel extends MainViewModel {
 
     private final SingleLiveEvent<Boolean> mClickThemeColorEvent = new SingleLiveEvent<>();
+    private final SingleLiveEvent<Boolean> mClickHighSettingEvent = new SingleLiveEvent<>();
 
     public SettingViewModel(@NonNull Application application) {
         super(application);
@@ -28,6 +28,10 @@ public class SettingViewModel extends MainViewModel {
 
     public SingleLiveEvent<Boolean> getClickThemeColorEvent() {
         return mClickThemeColorEvent;
+    }
+
+    public SingleLiveEvent<Boolean> getClickHighSettingEvent() {
+        return mClickHighSettingEvent;
     }
 
     public void clickAbout(Fragment fragment) {
@@ -39,6 +43,6 @@ public class SettingViewModel extends MainViewModel {
     }
 
     public void clickHighSetting(Fragment fragment) {
-        IntentHelper.openClass(fragment.requireContext(), HighSetAct.class);
+        mClickHighSettingEvent.setValue(true);
     }
 }

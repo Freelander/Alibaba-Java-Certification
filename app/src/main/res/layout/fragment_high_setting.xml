@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+    <data>
+        <variable
+            name="viewModel"
+            type="com.gojun.certification.view.setting.HighSettingViewModel" />
+
+        <variable
+            name="progress"
+            type="int" />
+    </data>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:animateLayoutChanges="true"
+        android:orientation="vertical">
+
+        <include
+            layout="@layout/layout_title"
+            app:viewModel="@{viewModel}" />
+
+        <TextView
+            style="@style/padding"
+            android:layout_width="match_parent"
+            android:background="@color/white"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:text="答对几次移出错题"
+            android:textSize="16sp"
+            android:layout_marginTop="12dp" />
+
+        <LinearLayout
+            android:background="@color/white"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <androidx.appcompat.widget.AppCompatSeekBar
+                android:id="@+id/seekBar_failed"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:max="5"
+                android:maxHeight="2dp"
+                android:paddingBottom="10dp"
+                android:paddingTop="10dp"
+                android:progress="@{progress}"
+                android:progressDrawable="@drawable/seekbar_style"
+                android:thumb="@drawable/knob"
+                android:thumbOffset="0dp"
+                app:bindHighSettingSeekBarListener="@{viewModel}"/>
+            
+            <TextView
+                android:id="@+id/seekBar_failed_txt"
+                style="@style/padding"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:textSize="16sp"
+                app:bindText="@{String.format(@string/failed_count, viewModel.failedCount)}"
+                tools:text="2次" />
+
+        </LinearLayout>
+
+        <View style="@style/divider_horizontal"/>
+
+    </LinearLayout>
+</layout>

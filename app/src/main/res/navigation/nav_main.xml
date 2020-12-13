@@ -1,31 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_main"
     app:startDestination="@id/study_page">
 
     <fragment
         android:id="@+id/study_page"
         android:name="com.gojun.certification.view.StudyFragment"
-        android:label="StudyFragment" />
+        android:label="StudyFragment"
+        tools:layout="@layout/fragment_study"/>
 
     <fragment
         android:id="@+id/auth_page"
         android:name="com.gojun.certification.view.SimulationAuthFragment"
-        android:label="SimulationAuthFragment" />
+        android:label="SimulationAuthFragment"
+        tools:layout="@layout/fragment_simulation_auth"/>
 
     <fragment
         android:id="@+id/fail_page"
         android:name="com.gojun.certification.view.FailTopicFragment"
-        android:label="FailTopicFragment" />
+        android:label="FailTopicFragment"
+        tools:layout="@layout/fragment_failed"/>
 
     <fragment
         android:id="@+id/setting_page"
         android:name="com.gojun.certification.view.SettingFragment"
-        android:label="SettingFragment" >
+        android:label="SettingFragment"
+        tools:layout="@layout/fragment_setting">
         <action
             android:id="@+id/action_setting_page_to_theme_page"
             app:destination="@id/theme_page"
+            app:enterAnim="@anim/activity_enter"
+            app:exitAnim="@anim/activity_exit"
+            app:popEnterAnim="@anim/activity_pop_enter"
+            app:popExitAnim="@anim/activity_pop_exit" />
+        <action
+            android:id="@+id/action_setting_page_to_high_setting_page"
+            app:destination="@id/high_setting_page"
             app:enterAnim="@anim/activity_enter"
             app:exitAnim="@anim/activity_exit"
             app:popEnterAnim="@anim/activity_pop_enter"
@@ -35,6 +47,13 @@
     <fragment
         android:id="@+id/theme_page"
         android:name="com.gojun.certification.view.setting.ThemeFragment"
-        android:label="ThemeFragment" />
+        android:label="ThemeFragment"
+        tools:layout="@layout/fragment_theme"/>
+
+    <fragment
+        android:id="@+id/high_setting_page"
+        android:name="com.gojun.certification.view.setting.HighSettingFragment"
+        android:label="HighSettingFragment"
+        tools:layout="@layout/fragment_high_setting"/>
 
 </navigation>

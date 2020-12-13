@@ -34,7 +34,7 @@ public class SettingFragment extends BaseMainFragment {
         mBinding.setViewModel(mViewModel);
         mBinding.setFragment(this);
 
-        setupObserve();
+        setupObservers();
         setupBottomNavObservers();
         return mBinding.getRoot();
     }
@@ -47,10 +47,16 @@ public class SettingFragment extends BaseMainFragment {
         }
     }
 
-    private void setupObserve() {
+    private void setupObservers() {
         mViewModel.getClickThemeColorEvent().observe(getViewLifecycleOwner(), aBoolean -> {
             if (aBoolean) {
                 NavHostFragment.findNavController(this).navigate(R.id.action_setting_page_to_theme_page);
+            }
+        });
+
+        mViewModel.getClickHighSettingEvent().observe(getViewLifecycleOwner(), aBoolean -> {
+            if (aBoolean) {
+                NavHostFragment.findNavController(this).navigate(R.id.action_setting_page_to_high_setting_page);
             }
         });
     }

@@ -14,7 +14,6 @@ import com.gojun.certification.model.QuestionModel;
 import com.gojun.certification.utils.IntentHelper;
 import com.gojun.certification.utils.LogCat;
 import com.gojun.certification.utils.Utils;
-import com.gojun.certification.view.setting.HighSetAct;
 import com.gojun.certification.view.study.StudyAct;
 
 import java.text.MessageFormat;
@@ -38,7 +37,7 @@ public class FailAct extends StudyAct{
     public void initUI() {
         super.initUI();
 
-        fail_count= (int) SessionData.getObject(mContext, HighSetAct.SP_REMOVE_COUNT,2);
+        fail_count= (int) SessionData.getObject(mContext, Constant.SP_REMOVE_COUNT,2);
 
         GONE($(R.id.study_total_record_layout));
 
