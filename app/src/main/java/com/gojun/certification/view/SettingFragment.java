@@ -12,12 +12,13 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.fragment.NavHostFragment;
 
 import com.gojun.certification.R;
-import com.gojun.certification.core.BaseFragment;
+import com.gojun.certification.core.BaseMainFragment;
 import com.gojun.certification.databinding.FragmentSettingBinding;
+import com.gojun.certification.global.Constant;
 
 import org.jetbrains.annotations.NotNull;
 
-public class SettingFragment extends BaseFragment {
+public class SettingFragment extends BaseMainFragment {
 
     private FragmentSettingBinding mBinding;
     private SettingViewModel mViewModel;
@@ -34,13 +35,14 @@ public class SettingFragment extends BaseFragment {
         mBinding.setFragment(this);
 
         setupObserve();
+        setupBottomNavObservers();
         return mBinding.getRoot();
     }
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == ThemeAct.REQ_THEME && resultCode == Activity.RESULT_OK) {
+        if (requestCode == Constant.REQ_THEME && resultCode == Activity.RESULT_OK) {
             mMainViewModel.sendChangeThemeEvent();
         }
     }
@@ -51,5 +53,10 @@ public class SettingFragment extends BaseFragment {
                 NavHostFragment.findNavController(this).navigate(R.id.action_setting_page_to_theme_page);
             }
         });
+    }
+
+    @Override
+    public MainViewModel getViewModel() {
+        return mViewModel;
     }
 }

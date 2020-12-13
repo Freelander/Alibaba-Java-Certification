@@ -5,6 +5,7 @@ import android.widget.TextView;
 
 import androidx.databinding.BindingAdapter;
 
+import com.gojun.certification.view.MainViewModel;
 import com.gojun.certification.widget.LightingView;
 
 /**
@@ -44,5 +45,15 @@ public class BindingAdapters {
 
         textView.setCompoundDrawablesRelativeWithIntrinsicBounds(iconResId, 0, 0, 0);
         textView.setVisibility(View.VISIBLE);
+    }
+
+    @BindingAdapter("bindBottomNavClick")
+    public static void bindBottomNavClick(View view, MainViewModel viewModel) {
+        view.setOnClickListener(v -> viewModel.sendChangeBottomNavEvent(v.getId()));
+    }
+
+    @BindingAdapter("bindBottomNavItemSelect")
+    public static void bindBottomNavItemSelect(View view, int currentItemId) {
+        view.setSelected(view.getId() == currentItemId);
     }
 }

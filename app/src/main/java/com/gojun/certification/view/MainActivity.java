@@ -4,10 +4,7 @@ import android.os.Bundle;
 
 import androidx.annotation.Nullable;
 import androidx.lifecycle.ViewModelProvider;
-import androidx.navigation.NavController;
-import androidx.navigation.fragment.NavHostFragment;
 
-import com.gojun.certification.R;
 import com.gojun.certification.core.BaseActivity;
 import com.gojun.certification.core.ThemeCore;
 import com.gojun.certification.databinding.ActivityMainBinding;
@@ -28,8 +25,6 @@ public class MainActivity extends BaseActivity {
     private FailTopicViewModel mFailTopicViewModel;
     private SettingViewModel mSettingViewModel;
 
-    private NavController mNavController;
-
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,38 +39,11 @@ public class MainActivity extends BaseActivity {
         mBinding.setViewModel(mViewModel);
         setContentView(mBinding.getRoot());
 
-        NavHostFragment navHostFragment = (NavHostFragment) getSupportFragmentManager().findFragmentById(R.id.nav_host_fragment);
-        mNavController = navHostFragment.getNavController();
-
         tintTheme();
         setupObserve();
     }
 
     private void setupObserve() {
-        mViewModel.getClickStudyEvent().observe(this, aBoolean -> {
-            if (aBoolean && !mNavController.popBackStack(R.id.study_page, false)) {
-                mNavController.navigate(R.id.study_page);
-            }
-        });
-
-        mViewModel.getClickAuthEvent().observe(this, aBoolean -> {
-            if (aBoolean && !mNavController.popBackStack(R.id.auth_page, false)) {
-                mNavController.navigate(R.id.auth_page);
-            }
-        });
-
-        mViewModel.getClickFailTopicEvent().observe(this, aBoolean -> {
-            if (aBoolean && !mNavController.popBackStack(R.id.fail_page, false)) {
-                mNavController.navigate(R.id.fail_page);
-            }
-        });
-
-        mViewModel.getClickSettingEvent().observe(this, aBoolean -> {
-            if (aBoolean && !mNavController.popBackStack(R.id.setting_page, false)) {
-                mNavController.navigate(R.id.setting_page);
-            }
-        });
-
         mViewModel.getChangeThemeEvent().observe(this, aBoolean -> {
             if (aBoolean) {
                 tintTheme();
@@ -93,6 +61,5 @@ public class MainActivity extends BaseActivity {
         if (ApiUtils.isLolinpop()) {
             getWindow().setStatusBarColor(ThemeCore.getStateBarColor(themeColor));
         }
-        mBinding.llBottomNav.setBackgroundColor(themeColor);
     }
 }

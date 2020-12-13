@@ -11,7 +11,7 @@ import androidx.annotation.Nullable;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.gojun.certification.R;
-import com.gojun.certification.core.BaseFragment;
+import com.gojun.certification.core.BaseMainFragment;
 import com.gojun.certification.core.DataManager;
 import com.gojun.certification.core.SessionData;
 import com.gojun.certification.databinding.FragmentStudyBinding;
@@ -24,7 +24,7 @@ import com.gojun.certification.widget.XDialog;
 
 import java.util.ArrayList;
 
-public class StudyFragment extends BaseFragment {
+public class StudyFragment extends BaseMainFragment {
 
     private StudyViewModel mViewModel;
     private FragmentStudyBinding mBinding;
@@ -44,11 +44,12 @@ public class StudyFragment extends BaseFragment {
         mBinding.setViewModel(mViewModel);
         mBinding.setFragment(this);
 
-        setupObserve();
+        setupObservers();
+        setupBottomNavObservers();
         return mBinding.getRoot();
     }
 
-    private void setupObserve() {
+    private void setupObservers() {
         mViewModel.getClickDeleteEvent().observe(getViewLifecycleOwner(), aBoolean -> {
             if (aBoolean) {
                 XDialog.showSelectDialog(mContext, "是否清空做题记录", new XDialog.DialogClickListener() {
@@ -84,5 +85,10 @@ public class StudyFragment extends BaseFragment {
             mViewModel.getStartTipText().add(0, current == 0 ? "开始练习" : "上次做到第" + current + "题");
             mViewModel.getDeleteVisible().set(current > 0);
         }
+    }
+
+    @Override
+    public MainViewModel getViewModel() {
+        return mViewModel;
     }
 }

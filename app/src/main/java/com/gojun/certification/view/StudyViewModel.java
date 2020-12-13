@@ -8,9 +8,9 @@ import androidx.databinding.ObservableArrayList;
 import androidx.databinding.ObservableBoolean;
 import androidx.lifecycle.MutableLiveData;
 
+import com.gojun.certification.R;
 import com.gojun.certification.core.DataManager;
 import com.gojun.certification.core.SessionData;
-import com.gojun.certification.frame.BaseAndroidViewModel;
 import com.gojun.certification.frame.SingleLiveEvent;
 import com.gojun.certification.global.Constant;
 import com.gojun.certification.model.QuestionModel;
@@ -22,7 +22,7 @@ import java.util.ArrayList;
  *
  * @author Jun 12/5/20
  */
-public class StudyViewModel extends BaseAndroidViewModel {
+public class StudyViewModel extends MainViewModel {
 
     private final MutableLiveData<ArrayList<QuestionModel>> mListResource = new MutableLiveData<>();
     private final ObservableBoolean mLoadVisible = new ObservableBoolean(false);
@@ -34,6 +34,7 @@ public class StudyViewModel extends BaseAndroidViewModel {
     public StudyViewModel(@NonNull Application application) {
         super(application);
         mStartTipText.add(0, "");
+        setCurrentItemId(R.id.tab_study);
     }
 
     public ObservableBoolean getLoadVisible() {
@@ -60,7 +61,7 @@ public class StudyViewModel extends BaseAndroidViewModel {
         return mClickDeleteEvent;
     }
 
-    public void sendClickStudyEvent() {
+    public void sendClickStartStudyEvent() {
         mClickStartEvent.setValue(true);
     }
 

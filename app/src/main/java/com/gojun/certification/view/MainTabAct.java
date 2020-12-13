@@ -12,6 +12,7 @@ import com.gojun.certification.core.BaseFragment;
 import com.gojun.certification.core.DataManager;
 import com.gojun.certification.core.SessionData;
 import com.gojun.certification.core.ThemeCore;
+import com.gojun.certification.global.Constant;
 import com.gojun.certification.utils.ApiUtils;
 import com.gojun.certification.widget.XDialog;
 
@@ -140,7 +141,7 @@ public class MainTabAct extends BaseActivity implements View.OnClickListener{
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if(requestCode== ThemeAct.REQ_THEME&&resultCode==RESULT_OK){
+        if(requestCode== Constant.REQ_THEME&&resultCode==RESULT_OK){
             tintTheme();
         }else{
             contentFragment.onActivityResult(requestCode,resultCode,data);

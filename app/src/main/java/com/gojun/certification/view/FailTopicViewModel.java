@@ -10,10 +10,10 @@ import androidx.databinding.ObservableBoolean;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.MutableLiveData;
 
+import com.gojun.certification.R;
 import com.gojun.certification.core.DataManager;
 import com.gojun.certification.core.async.XAsyncTask;
 import com.gojun.certification.core.async.XAsyncTaskListenerCompat;
-import com.gojun.certification.frame.BaseAndroidViewModel;
 import com.gojun.certification.global.Constant;
 import com.gojun.certification.model.QuestionModel;
 import com.gojun.certification.utils.AppConstants;
@@ -28,7 +28,7 @@ import java.util.ArrayList;
  *
  * @author Jun 12/2/20
  */
-public class FailTopicViewModel extends BaseAndroidViewModel {
+public class FailTopicViewModel extends MainViewModel {
 
     private final MutableLiveData<ArrayList<QuestionModel>> mListResource = new MutableLiveData<>();
 
@@ -40,8 +40,9 @@ public class FailTopicViewModel extends BaseAndroidViewModel {
 
     public FailTopicViewModel(@NonNull Application application) {
         super(application);
-        mFailTopicText.add(0, "");
         mEmptyText.add(0, "");
+        mFailTopicText.add(0, "");
+        setCurrentItemId(R.id.tab_failed);
     }
 
     public MutableLiveData<ArrayList<QuestionModel>> getListResource() {

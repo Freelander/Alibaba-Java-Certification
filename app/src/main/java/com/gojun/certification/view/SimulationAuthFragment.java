@@ -9,10 +9,10 @@ import androidx.annotation.Nullable;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.gojun.certification.R;
-import com.gojun.certification.core.BaseFragment;
+import com.gojun.certification.core.BaseMainFragment;
 import com.gojun.certification.databinding.FragmentSimulationAuthBinding;
 
-public class SimulationAuthFragment extends BaseFragment {
+public class SimulationAuthFragment extends BaseMainFragment {
 
     private SimulationAuthViewModel mViewModel;
     private FragmentSimulationAuthBinding mBinding;
@@ -29,6 +29,8 @@ public class SimulationAuthFragment extends BaseFragment {
         mBinding = FragmentSimulationAuthBinding.inflate(inflater);
         mBinding.setViewModel(mViewModel);
         mBinding.setFragment(this);
+
+        setupBottomNavObservers();
         return mBinding.getRoot();
     }
 
@@ -36,5 +38,10 @@ public class SimulationAuthFragment extends BaseFragment {
     public void onResume() {
         super.onResume();
         onHiddenChanged(false);
+    }
+
+    @Override
+    public MainViewModel getViewModel() {
+        return mViewModel;
     }
 }

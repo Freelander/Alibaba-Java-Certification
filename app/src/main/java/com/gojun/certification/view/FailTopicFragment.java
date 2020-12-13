@@ -11,10 +11,10 @@ import androidx.annotation.Nullable;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.gojun.certification.R;
-import com.gojun.certification.core.BaseFragment;
+import com.gojun.certification.core.BaseMainFragment;
 import com.gojun.certification.databinding.FragmentFailedBinding;
 
-public class FailTopicFragment extends BaseFragment {
+public class FailTopicFragment extends BaseMainFragment {
 
     private FailTopicViewModel mViewModel;
     private FragmentFailedBinding mBinding;
@@ -35,6 +35,7 @@ public class FailTopicFragment extends BaseFragment {
         mBinding.setViewModel(mViewModel);
 
         setupObservers();
+        setupBottomNavObservers();
         return mBinding.getRoot();
     }
 
@@ -64,5 +65,10 @@ public class FailTopicFragment extends BaseFragment {
         if (resultCode == Activity.RESULT_OK) {
             mViewModel.loadData(requireContext());
         }
+    }
+
+    @Override
+    public MainViewModel getViewModel() {
+        return mViewModel;
     }
 }

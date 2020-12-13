@@ -22,64 +22,76 @@
             layout="@layout/layout_title"
             app:viewModel="@{viewModel}" />
 
-        <include layout="@layout/layout_list_empty_view"
-            app:layoutVisibility="@{viewModel.emptyLayoutVisibility}"
-            app:emptyText="@{viewModel.emptyText.get(0)}"
-            tools:visibility="gone"/>
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/f_start"
-            style="@style/padding"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:background="@color/white"
-            android:onClick="@{() -> viewModel.clickDoFailTopic(fragment)}">
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="vertical">
 
-            <TextView
+            <include layout="@layout/layout_list_empty_view"
+                app:layoutVisibility="@{viewModel.emptyLayoutVisibility}"
+                app:emptyText="@{viewModel.emptyText.get(0)}"
+                tools:visibility="gone"/>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/f_start"
+                style="@style/padding"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:drawableStart="@drawable/f_start"
-                android:drawablePadding="10dp"
-                android:gravity="center|start"
-                android:text="做错题"
-                android:textSize="16sp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"/>
-
-            <TextView
-                android:id="@+id/fail_start_tip"
-                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="@color/white"
+                android:onClick="@{() -> viewModel.clickDoFailTopic(fragment)}">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:drawableStart="@drawable/f_start"
+                    android:drawablePadding="10dp"
+                    android:gravity="center|start"
+                    android:text="做错题"
+                    android:textSize="16sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"/>
+
+                <TextView
+                    android:id="@+id/fail_start_tip"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:drawablePadding="10dp"
+                    android:drawableEnd="@drawable/right"
+                    android:gravity="center"
+                    android:textSize="16sp"
+                    app:bindText="@{viewModel.failTopicText.get(0)}"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"/>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <View style="@style/divider_horizontal"/>
+
+            <com.gojun.certification.widget.md.MaterialTextView
+                android:id="@+id/fail_delete"
+                style="@style/padding"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:drawableStart="@drawable/delete"
                 android:drawablePadding="10dp"
                 android:drawableEnd="@drawable/right"
-                android:gravity="center"
+                android:gravity="center|left"
+                android:text="清空错题"
                 android:textSize="16sp"
-                app:bindText="@{viewModel.failTopicText.get(0)}"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"/>
+                android:onClick="@{() -> viewModel.clickClearFailTopic(fragment)}" />
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
+            <View style="@style/divider_horizontal"/>
 
-        <View style="@style/divider_horizontal"/>
+        </LinearLayout>
 
-        <com.gojun.certification.widget.md.MaterialTextView
-            android:id="@+id/fail_delete"
-            style="@style/padding"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/white"
-            android:drawableStart="@drawable/delete"
-            android:drawablePadding="10dp"
-            android:drawableEnd="@drawable/right"
-            android:gravity="center|left"
-            android:text="清空错题"
-            android:textSize="16sp"
-            android:onClick="@{() -> viewModel.clickClearFailTopic(fragment)}" />
-
-        <View style="@style/divider_horizontal"/>
+        <include
+            layout="@layout/layout_bottom_nav"
+            app:viewModel="@{viewModel}" />
 
     </LinearLayout>
 </layout>

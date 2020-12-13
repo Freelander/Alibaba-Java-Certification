@@ -19,7 +19,7 @@
 
         <include
             layout="@layout/layout_title"
-            app:viewModel="@{viewModel}"/>
+            app:viewModel="@{viewModel}" />
 
         <com.gojun.certification.widget.md.MaterialLinearLayout
             android:id="@+id/t_start"
@@ -28,7 +28,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:background="@color/white"
-            android:onClick="@{() -> viewModel.sendClickStudyEvent()}">
+            android:onClick="@{() -> viewModel.sendClickStartStudyEvent()}">
 
             <TextView
                 android:layout_width="0dp"
@@ -86,5 +86,15 @@
             android:layout_margin="10dp"
             android:text="@string/study_tips"
             android:textColor="@color/gray_txt"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+        <include
+            layout="@layout/layout_bottom_nav"
+            app:viewModel="@{viewModel}" />
+
     </LinearLayout>
 </layout>

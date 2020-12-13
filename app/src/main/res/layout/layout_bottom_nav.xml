@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+    <data>
+        <variable
+            name="viewModel"
+            type="com.gojun.certification.view.MainViewModel" />
+    </data>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/ll_bottom_nav"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        app:bindViewBackground="@{viewModel.themeColor}"
+        tools:background="@color/theme_color">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tab_study"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:drawableTop="@drawable/tab_test_sel"
+            android:gravity="center"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"
+            android:text="练习"
+            android:textColor="@color/tab_txt_sel"
+            android:textSize="14sp"
+            app:bindBottomNavClick="@{viewModel}"
+            app:bindBottomNavItemSelect="@{viewModel.currentItemId}" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tab_auth"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:clickable="true"
+            android:drawableTop="@drawable/tab_exam_sel"
+            android:focusable="true"
+            android:gravity="center"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"
+            android:text="模拟认证"
+            android:textColor="@color/tab_txt_sel"
+            android:textSize="14sp"
+            app:bindBottomNavClick="@{viewModel}"
+            app:bindBottomNavItemSelect="@{viewModel.currentItemId}" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tab_failed"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:drawableTop="@drawable/tab_failed_sel"
+            android:gravity="center"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"
+            android:text="错题"
+            android:textColor="@color/tab_txt_sel"
+            android:textSize="14sp"
+            app:bindBottomNavClick="@{viewModel}"
+            app:bindBottomNavItemSelect="@{viewModel.currentItemId}" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tab_setting"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:drawableTop="@drawable/tab_setting_sel"
+            android:gravity="center"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"
+            android:text="设置"
+            android:textColor="@color/tab_txt_sel"
+            android:textSize="14sp"
+            app:bindBottomNavClick="@{viewModel}"
+            app:bindBottomNavItemSelect="@{viewModel.currentItemId}" />
+
+    </LinearLayout>
+</layout>

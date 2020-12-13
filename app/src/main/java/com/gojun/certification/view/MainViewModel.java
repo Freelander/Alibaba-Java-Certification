@@ -14,54 +14,36 @@ import com.gojun.certification.frame.SingleLiveEvent;
  */
 public class MainViewModel extends BaseAndroidViewModel {
 
-
-    private final SingleLiveEvent<Boolean> mClickStudyEvent = new SingleLiveEvent<>();
-    private final SingleLiveEvent<Boolean> mClickAuthEvent = new SingleLiveEvent<>();
-    private final SingleLiveEvent<Boolean> mClickFailTopicEvent = new SingleLiveEvent<>();
-    private final SingleLiveEvent<Boolean> mClickSettingEvent = new SingleLiveEvent<>();
     private final SingleLiveEvent<Boolean> mChangeThemeEvent = new SingleLiveEvent<>();
+    private final SingleLiveEvent<Integer> mChangeBottomNavEvent = new SingleLiveEvent<>();
+
+    private int mCurrentItemId = -1;
 
     public MainViewModel(@NonNull Application application) {
         super(application);
-    }
-
-    public SingleLiveEvent<Boolean> getClickStudyEvent() {
-        return mClickStudyEvent;
-    }
-
-    public SingleLiveEvent<Boolean> getClickAuthEvent() {
-        return mClickAuthEvent;
-    }
-
-    public SingleLiveEvent<Boolean> getClickFailTopicEvent() {
-        return mClickFailTopicEvent;
-    }
-
-    public SingleLiveEvent<Boolean> getClickSettingEvent() {
-        return mClickSettingEvent;
     }
 
     public SingleLiveEvent<Boolean> getChangeThemeEvent() {
         return mChangeThemeEvent;
     }
 
-    public void sendClickStudyEvent() {
-        mClickStudyEvent.setValue(true);
-    }
-
-    public void sendClickAuthEvent() {
-        mClickAuthEvent.setValue(true);
-    }
-
-    public void sendClickFailEvent() {
-        mClickFailTopicEvent.setValue(true);
-    }
-
-    public void sendClickSettingEvent() {
-        mClickSettingEvent.setValue(true);
+    public SingleLiveEvent<Integer> getChangeBottomNavEvent() {
+        return mChangeBottomNavEvent;
     }
 
     public void sendChangeThemeEvent() {
         mChangeThemeEvent.setValue(true);
+    }
+
+    public void sendChangeBottomNavEvent(int viewId) {
+        mChangeBottomNavEvent.setValue(viewId);
+    }
+
+    public void setCurrentItemId(int itemId) {
+        this.mCurrentItemId = itemId;
+    }
+
+    public int getCurrentItemId() {
+        return mCurrentItemId;
     }
 }
